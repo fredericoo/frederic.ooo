@@ -3,8 +3,11 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^16.1.0
   '@commitlint/config-conventional': ^16.0.0
+  '@karibash/pixel-units': ^2.3.0
   '@prefresh/babel-plugin': ^0.4.3
+  '@radix-ui/colors': ^0.1.8
   '@remix-run/eslint-config': ^1.6.5
+  '@stitches/react': ^1.2.8
   '@types/node': 18.6.4
   '@types/react': 18.0.16
   '@types/react-dom': 18.0.6
@@ -21,11 +24,14 @@ specifiers:
   react: npm:@preact/compat@17.1.1
   react-dom: npm:@preact/compat@17.1.1
   react-ssr-prepass: npm:preact-ssr-prepass@^1.2.0
+  ts-toolbelt: ^9.6.0
   typescript: 4.7.4
   webpack: ^5.74.0
 
 dependencies:
   '@prefresh/babel-plugin': 0.4.3
+  '@radix-ui/colors': 0.1.8
+  '@stitches/react': 1.2.8_@preact+compat@17.1.1
   next: 12.2.4_dmmjpkrptnkrz2kzqikv5vt4mi
   next-plugin-preact: 3.0.7_f33te3ctd3khk6fedxtmjsyj2e
   preact: 10.10.1
@@ -38,6 +44,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 16.3.0
   '@commitlint/config-conventional': 16.2.4
+  '@karibash/pixel-units': 2.3.0
   '@remix-run/eslint-config': 1.6.7_myafkpt5halcj63kwe75o4pv2e
   '@types/node': 18.6.4
   '@types/react': 18.0.16
@@ -48,6 +55,7 @@ devDependencies:
   eslint-config-next: 12.2.4_qugx7qdu5zevzvxaiqyxfiwquq
   husky: 7.0.4
   lint-staged: 12.5.0
+  ts-toolbelt: 9.6.0
   typescript: 4.7.4
 
 packages:
@@ -613,6 +621,12 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@karibash/pixel-units/2.3.0:
+    resolution: {integrity: sha512-+IgmqYmmz2WZzJ1MpCnOMV2C58muLQX2VUy0pi/XGPBA5vMm6xN/9HNOykyLe7r/bvvqoQULC4frKeq+ypKVRA==}
+    dependencies:
+      tslib: 2.4.0
+    dev: true
+
   /@next/env/12.2.4:
     resolution: {integrity: sha512-/gApFXWk5CCLFQJL5IYJXxPQuG5tz5nPX4l27A9Zm/+wJxiwFrRSP54AopDxIv4JRp/rGwcgk/lZS/0Clw8jYA==}
     dev: false
@@ -814,6 +828,10 @@ packages:
       webpack: 5.74.0
     dev: false
 
+  /@radix-ui/colors/0.1.8:
+    resolution: {integrity: sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==}
+    dev: false
+
   /@remix-run/eslint-config/1.6.7_myafkpt5halcj63kwe75o4pv2e:
     resolution: {integrity: sha512-TtvRv49hzwYe6JPYqY/KY8t1MQRZT7frfNKyviZNteP3UTH7ydL9czdwZ/MEdWSRFqE4FuQWJJOpBn/42AN8sg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -855,6 +873,14 @@ packages:
   /@rushstack/eslint-patch/1.1.4:
     resolution: {integrity: sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA==}
     dev: true
+
+  /@stitches/react/1.2.8_@preact+compat@17.1.1:
+    resolution: {integrity: sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==}
+    peerDependencies:
+      react: '>= 16.3.0'
+    dependencies:
+      react: /@preact/compat/17.1.1_preact@10.10.1
+    dev: false
 
   /@swc/helpers/0.4.3:
     resolution: {integrity: sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA==}
@@ -3938,6 +3964,10 @@ packages:
       typescript: 4.7.4
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
+    dev: true
+
+  /ts-toolbelt/9.6.0:
+    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
     dev: true
 
   /tsconfig-paths/3.14.1:
