@@ -1,1 +1,1 @@
-export * as stitches from './stitches.config';
+export { styled } from './stitches.config';

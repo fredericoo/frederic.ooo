@@ -1,5 +1,5 @@
-import type { Unit, UnitSuffix } from '@karibash/pixel-units';
-import type { PropertyValue, ScaleValue } from '@stitches/react';
+import type { AnyObject } from '@/lib/types';
+import type { PropertyValue } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
 import type { N } from 'ts-toolbelt';
 
@@ -21,22 +21,6 @@ export const renameRadixColour = <
 };
 
 const utils: ConfigType.Utils = {
-	m: (value: ScaleValue<'space'>) => ({ margin: value }),
-	mx: (value: ScaleValue<'space'>) => ({ marginInline: value }),
-	ml: (value: ScaleValue<'space'>) => ({ marginLeft: value }),
-	mr: (value: ScaleValue<'space'>) => ({ marginRight: value }),
-	my: (value: ScaleValue<'space'>) => ({ marginBlock: value }),
-	mt: (value: ScaleValue<'space'>) => ({ marginTop: value }),
-	mb: (value: ScaleValue<'space'>) => ({ marginBottom: value }),
-
-	p: (value: ScaleValue<'space'>) => ({ padding: value }),
-	px: (value: ScaleValue<'space'>) => ({ paddingInline: value }),
-	pl: (value: ScaleValue<'space'>) => ({ paddingLeft: value }),
-	pr: (value: ScaleValue<'space'>) => ({ paddingRight: value }),
-	py: (value: ScaleValue<'space'>) => ({ paddingBlock: value }),
-	pt: (value: ScaleValue<'space'>) => ({ paddingTop: value }),
-	pb: (value: ScaleValue<'space'>) => ({ paddingBottom: value }),
-
 	bg: (value: PropertyValue<'color'>) => ({ background: value }),
 
 	columns: (value: number) => ({
@@ -44,13 +28,13 @@ const utils: ConfigType.Utils = {
 		gridTemplateColumns: `repeat(${value}, 1fr)`,
 	}),
 
-	_hover: (value: any) => ({ '@hover': { '&:hover': value } }),
-	_active: (value: any) => ({ '&:active': value }),
-	_focus: (value: object) => ({
+	_hover: (value: AnyObject) => ({ '@hover': { '&:hover': value } }),
+	_active: (value: AnyObject) => ({ '&:active': value }),
+	_focus: (value: AnyObject) => ({
 		'&:focus': value,
 	}),
 
-	_focusVisible: (value: object) => ({
+	_focusVisible: (value: AnyObject) => ({
 		'@supports (:focus-visible)': {
 			'&:focus-visible': value,
 		},
@@ -68,17 +52,19 @@ const utils: ConfigType.Utils = {
 	}),
 };
 
-export const buildScale = <TMax extends number, TUnit extends UnitSuffix>(
-	multiplier: number,
-	unit: TUnit,
-	incrementsCount: TMax
-) => {
-	const segments = new Array(incrementsCount).fill(0).map((_, i) => [i + 1, `${(i + 1) * multiplier}${unit}`] as const);
+export const buildScale = <TKey, TValue>(params: {
+	incrementsCount: number;
+	getKey: (index: number) => TKey;
+	getValue: (index: number) => TValue;
+}) => {
+	const segments = Array.from({ length: params.incrementsCount }).map(
+		(_, i) => [params.getKey(i), params.getValue(i)] as const
+	);
 	const scale = Object.fromEntries(segments);
 
 	return scale as {
 		// @ts-ignore — we know TMax is under control.
-		[key in N.Range<1, TMax>[number]]: Unit<TUnit>;
+		[K in TKey]: TValue;
 	};
 };
 

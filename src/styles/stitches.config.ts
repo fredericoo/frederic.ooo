@@ -1,5 +1,6 @@
 import { mauve, mauveA } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
+import type { N } from 'ts-toolbelt';
 import utils, { buildScale, renameRadixColour } from './utils';
 
 export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config } = createStitches({
@@ -37,7 +38,14 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 			wide: '1.5',
 			wider: '1.618',
 		},
-		space: { min: '3px', ...buildScale(0.25, 'rem', 32) },
+		space: {
+			min: '3px',
+			...buildScale({
+				incrementsCount: 32,
+				getKey: i => (i + 1) as N.Range<1, 32>[number],
+				getValue: i => `${(i + 1) * 0.25}rem`,
+			}),
+		},
 		shadows: {
 			lg: '0px 91px 201px rgba(0, 0, 0, 0.09), 0px 38.0176px 83.973px rgba(0, 0, 0, 0.0646969), 0px 20.326px 44.896px rgba(0, 0, 0, 0.0536497), 0px 11.3946px 25.1683px rgba(0, 0, 0, 0.045), 0px 6.05159px 13.3667px rgba(0, 0, 0, 0.0363503), 0px 2.5182px 5.56219px rgba(0, 0, 0, 0.0253031)',
 		},
