@@ -1,24 +1,79 @@
 {
-  "name": "frederic.ooo",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.6.4",
-    "@types/react": "18.0.16",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.21.0",
-    "eslint-config-next": "12.2.4",
-    "typescript": "4.7.4"
-  }
+	"name": "frederic.ooo",
+	"version": "0.1.0",
+	"private": true,
+	"license": "MIT",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@prefresh/babel-plugin": "^0.4.3",
+		"next": "12.2.4",
+		"next-plugin-preact": "^3.0.7",
+		"preact": "^10.10.1",
+		"preact-render-to-string": "^5.2.1",
+		"react": "npm:@preact/compat@17.1.1",
+		"react-dom": "npm:@preact/compat@17.1.1",
+		"react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
+		"webpack": "^5.74.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^16.1.0",
+		"@commitlint/config-conventional": "^16.0.0",
+		"@remix-run/eslint-config": "^1.6.5",
+		"@types/node": "18.6.4",
+		"@types/react": "18.0.16",
+		"@types/react-dom": "18.0.6",
+		"@typescript-eslint/eslint-plugin": "^5.28.0",
+		"@typescript-eslint/parser": "^5.32.0",
+		"eslint": "8.21.0",
+		"eslint-config-next": "12.2.4",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.1",
+		"typescript": "4.7.4"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,js,jsx}": [
+			"yarn run eslint --max-warnings 0 --fix"
+		],
+		"*.{md,json}": [
+			"prettier --write"
+		]
+	},
+	"commitlint": {
+		"rules": {
+			"type-case": [
+				2,
+				"always",
+				"lower-case"
+			],
+			"type-empty": [
+				2,
+				"never"
+			],
+			"type-enum": [
+				2,
+				"always",
+				[
+					"build",
+					"ci",
+					"chore",
+					"docs",
+					"feat",
+					"fix",
+					"perf",
+					"refactor",
+					"revert",
+					"style",
+					"test"
+				]
+			]
+		},
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	}
 }
