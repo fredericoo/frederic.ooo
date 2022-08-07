@@ -7,7 +7,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"prepare": "husky install",
+		"ts-check": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@prefresh/babel-plugin": "^0.4.3",
