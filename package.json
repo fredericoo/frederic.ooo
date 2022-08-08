@@ -46,6 +46,9 @@
 	"lint-staged": {
 		"*.{ts,tsx,js,jsx}": [
 			"pnpm eslint --max-warnings 0 --fix"
+		],
+		"*.{md,json}": [
+			"prettier --write"
 		]
 	},
 	"commitlint": {
