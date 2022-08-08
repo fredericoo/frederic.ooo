@@ -22,6 +22,7 @@
 		"react": "npm:@preact/compat@17.1.1",
 		"react-dom": "npm:@preact/compat@17.1.1",
 		"react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
+		"stitches-reset": "^1.0.0",
 		"webpack": "^5.74.0"
 	},
 	"devDependencies": {
@@ -43,10 +44,7 @@
 	},
 	"lint-staged": {
 		"*.{ts,tsx,js,jsx}": [
-			"yarn run eslint --max-warnings 0 --fix"
-		],
-		"*.{md,json}": [
-			"prettier --write"
+			"pnpm eslint --max-warnings 0 --fix"
 		]
 	},
 	"commitlint": {

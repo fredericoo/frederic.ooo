@@ -24,6 +24,7 @@ specifiers:
   react: npm:@preact/compat@17.1.1
   react-dom: npm:@preact/compat@17.1.1
   react-ssr-prepass: npm:preact-ssr-prepass@^1.2.0
+  stitches-reset: ^1.0.0
   ts-toolbelt: ^9.6.0
   typescript: 4.7.4
   webpack: ^5.74.0
@@ -39,6 +40,7 @@ dependencies:
   react: /@preact/compat/17.1.1_preact@10.10.1
   react-dom: /@preact/compat/17.1.1_preact@10.10.1
   react-ssr-prepass: /preact-ssr-prepass/1.2.0_preact@10.10.1
+  stitches-reset: 1.0.0
   webpack: 5.74.0
 
 devDependencies:
@@ -3717,6 +3719,10 @@ packages:
     dependencies:
       readable-stream: 3.6.0
     dev: true
+
+  /stitches-reset/1.0.0:
+    resolution: {integrity: sha512-qeTbzXrS27hvhfdKSWn8rEzkno1Yii4y3/2Oq6HksMuMxY9x2xzNNnNh6Aor+0XYOK6HvpQZ8kluAO3M8rt34A==}
+    dev: false
 
   /string-argv/0.3.1:
     resolution: {integrity: sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==}

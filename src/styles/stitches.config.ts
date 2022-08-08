@@ -1,31 +1,37 @@
-import { mauve, mauveA } from '@radix-ui/colors';
+import { cyan, mauve, plum } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 import type { N } from 'ts-toolbelt';
 import utils, { buildScale, renameRadixColour } from './utils';
 
+const primary = renameRadixColour(mauve, 'mauve', 'primary');
+
 export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config } = createStitches({
 	theme: {
 		colors: {
-			...renameRadixColour(mauve, 'mauve', 'primary'),
-			...renameRadixColour(mauveA, 'mauveA', 'primaryA'),
+			...primary,
 			accent: '#E54D2E',
 			accentWideGamut: 'color(display-p3 1 0.249 0)',
+			tagCreator: cyan.cyan4,
+			tagDesign: plum.plum4,
 		},
 		fonts: {
-			sans: '"neue-haas-grotesk-display", Helvetica, sans-serif',
+			text: '"neue-haas-grotesk-text", Helvetica, sans-serif',
+			display: '"neue-haas-grotesk-display", Helvetica, sans-serif',
 		},
 		fontSizes: {
-			sm: '1rem',
-			md: '1.18rem',
+			sm: '.8rem',
+			md: '1rem',
 			lg: 'clamp(2rem, 60px + (100vw - ((100vw - ($sizes$container/2))/6 + 1rem)*2 - $sizes$container)*0.0005*120, 2.8rem)',
 			xl: 'clamp(2rem, 72px + (100vw - ((100vw - ($sizes$container/2))/6 + 1rem)*2 - $sizes$container)*0.0005*72, 4rem)',
 		},
 		fontWeights: {
-			normal: 600,
+			normal: 400,
 			bold: 700,
 		},
 		sizes: {
 			container: '1366px',
+			scaleHover: '1.1',
+			scaleActive: '0.95',
 		},
 		letterSpacings: {
 			tight: '-0.025em',
@@ -51,16 +57,21 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 		},
 		radii: {
 			rounded: '999rem',
-			xs: '.25rem',
+			xs: '.618rem',
 			sm: '1rem',
-			md: '2rem',
+			md: '1.5rem',
 			lg: '3rem',
+		},
+		zIndices: {
+			highest: '999',
+		},
+		transitions: {
+			expo: 'cubic-bezier(0.16, 1, 0.3, 1)',
 		},
 	},
 	media: {
-		md: '(min-width: 768px)',
-		lg: '(min-width: 1280px)',
-		hover: '(any-hover: hover)',
+		bp1: '(min-width: 768px)',
+		bp2: '(min-width: 1280px)',
 	},
 	utils,
 	prefix: 'fb',

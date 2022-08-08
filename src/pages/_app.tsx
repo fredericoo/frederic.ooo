@@ -1,12 +1,11 @@
-import SiteFrame from '@/components/SiteFrame/SiteFrame';
+import Layout from '@/components/Layout';
 import type { AppProps } from 'next/app';
 
 const App = ({ Component, pageProps }: AppProps) => {
 	return (
-		<>
-			<SiteFrame />
+		<Layout>
 			<Component {...pageProps} />
-		</>
+		</Layout>
 	);
 };
 

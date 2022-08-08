@@ -28,14 +28,19 @@ const utils: ConfigType.Utils = {
 		gridTemplateColumns: `repeat(${value}, 1fr)`,
 	}),
 
-	_hover: (value: AnyObject) => ({ '@hover': { '&:hover': value } }),
+	_hover: (value: AnyObject) => ({ '@media (any-hover: hover)': { '&:hover': value } }),
 	_active: (value: AnyObject) => ({ '&:active': value }),
 	_focus: (value: AnyObject) => ({
 		'&:focus': value,
 	}),
 
+	_transition: (value: PropertyValue<'transition'>) => ({
+		'@media (prefers-reduced-motion: no-preference)': { transition: value },
+	}),
+
 	_focusVisible: (value: AnyObject) => ({
-		'@supports (:focus-visible)': {
+		'@supports selector(:focus-visible)': {
+			'&:focus': { outline: 'none' },
 			'&:focus-visible': value,
 		},
 	}),

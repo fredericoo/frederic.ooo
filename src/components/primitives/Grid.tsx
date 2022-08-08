@@ -2,8 +2,15 @@ import { styled } from '@/styles';
 import Box from './Box';
 
 const Grid = styled(Box, {
+	display: 'grid',
 	variants: {
-		columns: Object.fromEntries(new Array(6).fill(0).map((_, i) => [`${i + 1}`, { columns: i + 1 }])),
+		columns: {
+			1: {},
+			2: { gridTemplateColumns: 'repeat(2, 1fr)' },
+			3: { gridTemplateColumns: 'repeat(3, 1fr)' },
+			4: { gridTemplateColumns: 'repeat(4, 1fr)' },
+			6: { gridTemplateColumns: 'repeat(6, 1fr)' },
+		},
 		rowType: {
 			sameHeight: {},
 			fluid: {
@@ -12,10 +19,7 @@ const Grid = styled(Box, {
 		},
 	},
 
-	gap: '$4',
-	'@md': {
-		gap: '$8',
-	},
+	gap: '$2',
 });
 
 export default Grid;
