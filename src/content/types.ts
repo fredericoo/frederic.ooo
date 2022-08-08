@@ -10,6 +10,7 @@ export type ProjectTag = {
 	text: string;
 	color?: `$${keyof typeof theme['colors']}`;
 };
+export const createTags = <T extends Record<string, ProjectTag>>(tags: T) => tags as Record<keyof T, ProjectTag>;
 
 export type Project = {
 	title: string;
@@ -18,4 +19,22 @@ export type Project = {
 	image?: ProjectImage;
 	link?: { href: string };
 	tags: (keyof typeof tags)[];
+};
+
+export type Skill = {
+	name: string;
+};
+
+export type SkillCategory = { name: string; skills: Skill[] };
+
+export type Social = {
+	name: string;
+	url: string;
+};
+
+export type ProfessionalExperience = {
+	companyName: string;
+	year: { start: number; end?: number };
+	position: string;
+	description: string;
 };

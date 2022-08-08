@@ -7,7 +7,7 @@ import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
 	return (
-		<Container css={{ paddingBlock: '$8' }}>
+		<Container css={{ paddingBlock: '$12' }}>
 			<Stack.V css={{ gap: '$16' }}>
 				<Grid
 					as="section"

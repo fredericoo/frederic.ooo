@@ -1,6 +1,4 @@
-import type { ProjectTag } from './types';
-
-const createTags = <T extends Record<string, ProjectTag>>(tags: T) => tags;
+import { createTags } from './types';
 
 const projectTags = createTags({
 	creator: { text: 'Created', color: '$tagCreator' },

@@ -1,7 +1,7 @@
 import Card from '@/components/Card';
 import { Heading, Stack } from '@/components/primitives';
 import Tag from '@/components/Tag';
-import type { Skill } from '@/content/skills';
+import type { Skill } from '@/content/types';
 
 type SkillCardProps = {
 	categoryName: string;

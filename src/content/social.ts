@@ -1,7 +1,4 @@
-type Social = {
-	name: string;
-	url: string;
-};
+import type { Social } from './types';
 
 export const socials: Social[] = [
 	{ name: 'GitHub', url: 'https://github.com/fredericoo' },

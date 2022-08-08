@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Box, Container } from '../primitives';
+import { Box, Container, Link } from '../primitives';
 
 type FooterProps = {};
 
@@ -19,7 +19,16 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((_, ref) => {
 				width: '100%',
 			}}
 		>
-			<Container>if you’ve gotten this far, ask for pictures of my cats 🐈‍⬛ 🐈‍⬛ 🐈</Container>
+			<Container>
+				if you’ve gotten this far you get to see{' '}
+				<Link
+					href="https://instagram.com/fredericooooooooooooo"
+					css={{ color: 'inherit', _hover: { color: '$primary9' } }}
+				>
+					pictures of my cats
+				</Link>
+				! 🐈‍⬛ 🐈‍⬛ 🐈
+			</Container>
 		</Box>
 	);
 });

@@ -19,7 +19,7 @@ const Grid = styled(Box, {
 		},
 	},
 
-	gap: '$2',
+	gap: '$4',
 });
 
 export default Grid;
