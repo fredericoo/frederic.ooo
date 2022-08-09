@@ -1,4 +1,4 @@
-import { reset } from 'stitches-reset';
+import reset from './reset';
 import { globalCss } from './stitches.config';
 
 const globalStyles = globalCss({
@@ -17,6 +17,7 @@ const globalStyles = globalCss({
 	a: {
 		textDecoration: 'none',
 		color: 'inherit',
+		fontSize: 'inherit',
 	},
 	button: {
 		border: 'none',

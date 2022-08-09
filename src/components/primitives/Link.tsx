@@ -3,7 +3,6 @@ import { styled } from '@/styles';
 const Link = styled('a', {
 	color: '$primary12',
 	textDecoration: 'underline',
-	fontSize: '$md',
 	textUnderlineOffset: '.3em',
 	border: 'none',
 	_focusVisible: {

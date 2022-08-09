@@ -13,6 +13,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((_, ref) => {
 				color: '$primary11',
 				textAlign: 'center',
 				paddingBlock: '$6',
+				fontSize: '$sm',
 				zIndex: -1,
 				position: 'fixed',
 				bottom: 0,

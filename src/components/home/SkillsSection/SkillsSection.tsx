@@ -8,7 +8,7 @@ type SkillsSectionProps = {};
 const SkillsSection: React.FC<SkillsSectionProps> = () => {
 	return (
 		<Section title="Skills">
-			<Grid columns={{ '@bp1': 2, '@bp2': 3 }}>
+			<Grid columns={{ '@bp1': 4, '@bp2': 6 }}>
 				{skillCategories.map(category => (
 					<SkillCard key={category.name} categoryName={category.name} skills={category.skills} />
 				))}

@@ -1,7 +1,14 @@
 import { styled } from '@/styles';
 import { Box, Stack } from '../primitives';
 
-const Wrapper = styled(Stack.V, { backgroundColor: '$primary1', borderRadius: '$md', overflow: 'hidden' });
+export const cardWrapperStyles: Parameters<typeof Stack.V>[0]['css'] = {
+	backgroundColor: '$primary1',
+	borderRadius: '$md',
+	overflow: 'hidden',
+	position: 'relative',
+};
+
+const Wrapper = styled(Stack.V, cardWrapperStyles);
 
 const Divider = styled('hr', {
 	backgroundColor: '$primary3',

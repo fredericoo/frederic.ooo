@@ -10,7 +10,7 @@ const experience: ProfessionalExperience[] = [
 	},
 	{
 		companyName: 'Penumbra design et web',
-		position: 'Co-founder & design developer',
+		position: 'Co-founder & design engineer',
 		year: { start: 2018, end: 2021 },
 		description: 'Designed and built digital and branding projects from ideation to production.',
 	},

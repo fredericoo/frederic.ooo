@@ -14,8 +14,16 @@ const Home: NextPage = () => {
 					columns={{ '@bp1': 2, '@bp2': 3 }}
 					css={{ '@bp1': { minHeight: '80vh' }, alignItems: 'center' }}
 				>
-					<Box as="header" css={{ '@bp2': { gridColumn: '1 / 3' } }}>
-						<Heading as="h1" size="xl">
+					<Box
+						as="header"
+						css={{
+							paddingBlockEnd: '$16',
+							position: 'sticky',
+							top: '$12',
+							'@bp2': { gridColumn: '1 / 3', position: 'static' },
+						}}
+					>
+						<Heading as="h1" size="xl" css={{ paddingInlineStart: '$6' }}>
 							👋
 							<br />
 							hey! I’m Freddie, a creative developer obsessed with experimentation & new technologies.

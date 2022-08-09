@@ -10,19 +10,21 @@ type SkillCardProps = {
 
 const SkillCard: React.FC<SkillCardProps> = ({ categoryName, skills }) => {
 	return (
-		<Card.Wrapper>
+		<Card.Wrapper css={{ background: 'transparent' }}>
 			<Card.Content>
-				<Heading size="md" css={{ textTransform: 'lowercase' }}>
-					{categoryName}
-				</Heading>
-			</Card.Content>
-			<Card.Divider />
-			<Card.Content>
-				<Stack.H css={{ gap: '$1', flexWrap: 'wrap' }}>
-					{skills.map(skill => (
-						<Tag key={skill.name}>{skill.name}</Tag>
-					))}
-				</Stack.H>
+				<Stack.V css={{ gap: '$2' }}>
+					<Heading size="md" css={{ textTransform: 'lowercase' }}>
+						{categoryName}
+					</Heading>
+
+					<Stack.H css={{ gap: '$1', flexWrap: 'wrap', marginInline: '-$1' }}>
+						{skills.map(skill => (
+							<Tag css={{ backgroundColor: '$primary1' }} key={skill.name}>
+								{skill.name}
+							</Tag>
+						))}
+					</Stack.H>
+				</Stack.V>
 			</Card.Content>
 		</Card.Wrapper>
 	);

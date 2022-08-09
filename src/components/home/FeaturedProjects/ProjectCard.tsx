@@ -5,6 +5,8 @@ import type { Project } from '@/content/types';
 import { urlToDisplay } from '@/lib/utils';
 import { styled } from '@/styles';
 import Image from 'next/image';
+import Arrow from './Arrow';
+import PlusButton from './PlusButton';
 
 type ProjectThumbProps = Project & { isOpen?: boolean; onClickHeader?: () => void };
 
@@ -33,6 +35,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				onClick={onClickHeader}
 				css={{
 					height: !isOpen ? CARD_HEIGHT : '0px',
+					willChange: 'height',
 					_transition: '.6s $expo',
 					position: 'relative',
 					backgroundColor: '$primary6',
@@ -76,33 +79,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 						</Box>
 					)}
 				</Stack.V>
-				<Box
-					className="icon-plus"
-					css={{
-						borderRadius: '$rounded',
-						backgroundColor: '$primary4',
-						color: '$primary12',
-						transform: '1',
-						_transition: 'transform 0.6s $expo',
-					}}
-				>
-					<Box
-						css={{
-							aspectRatio: '1',
-							width: '2em',
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
-							_transition: 'transform 1.5s $expo',
-						}}
-					>
-						<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-							<line y1="6" x2="12" y2="6" stroke="currentColor" />
-							<line x1="6" x2="6" y2="12" stroke="currentColor" />
-						</svg>
-					</Box>
-				</Box>
+				<PlusButton isOpen={isOpen === true} />
 			</Stack.H>
 
 			<Stack.V
@@ -128,8 +105,14 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				{link && (
 					<Box css={{ flexShrink: '0', padding: '$6' }}>
 						<Type css={{ fontSize: '$sm' }}>View it live</Type>
-						<Link href={link.href} css={{ fontWeight: '$bold', fontFamily: '$display' }} tabIndex={isOpen ? 0 : -1}>
-							{urlToDisplay(link.href)}
+						<Link
+							href={link.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							css={{ fontWeight: '$bold', fontFamily: '$display' }}
+							tabIndex={isOpen ? 0 : -1}
+						>
+							{urlToDisplay(link.href)} <Arrow />
 						</Link>
 					</Box>
 				)}

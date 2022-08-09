@@ -9,7 +9,7 @@ type SectionProps = {
 const Section: React.FC<SectionProps> = ({ title, children }) => {
 	return (
 		<Stack.V as="section" css={{ gap: '$4' }}>
-			<Heading size="lg" as="h2">
+			<Heading size="lg" as="h2" css={{ paddingInlineStart: '$6' }}>
 				{title}
 			</Heading>
 			{children}

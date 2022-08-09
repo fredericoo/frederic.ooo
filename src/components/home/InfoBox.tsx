@@ -31,7 +31,7 @@ type InfoBoxProps = {};
 
 const InfoBox: React.FC<InfoBoxProps> = () => {
 	return (
-		<Wrapper as="aside">
+		<Wrapper as="aside" css={{ position: 'relative', transform: 'translateZ(1px)', isolation: 'isolate' }}>
 			<Stack.V css={{ gap: '$3' }}>
 				<Box
 					css={{
@@ -57,7 +57,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 					I’m a communicative front-end developer who loves to create and deploy. On a regular morning expect to hear me
 					overexcitedly talk about the next new big library, compiler, or animation engine.
 				</Type>
-				<Type css={{ color: '$primary12' }}>🔎 ️Currently exploring Solid.js and Rust.</Type>
+				<Type css={{ color: '$primary12' }}>🔎 Currently exploring Solid.js and Rust.</Type>
 			</Stack.V>
 			<Stack.V as="dl" css={{ gap: '$2' }}>
 				{Object.entries(details).map(([key, value]) => (
@@ -69,7 +69,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 			</Stack.V>
 			<Stack.H css={{ gap: '$1' }}>
 				{socials.map(({ name, url }) => (
-					<SocialLink key={name} href={url}>
+					<SocialLink key={name} href={url} target="_blank" rel="noopener noreferrer">
 						{name}
 					</SocialLink>
 				))}
