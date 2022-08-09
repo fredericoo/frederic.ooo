@@ -3,7 +3,8 @@ import { Box, Stack } from '../primitives';
 
 export const cardWrapperStyles: Parameters<typeof Stack.V>[0]['css'] = {
 	backgroundColor: '$primary1',
-	borderRadius: '$md',
+	borderRadius: '$sm',
+	'@bp1': { borderRadius: '$md' },
 	overflow: 'hidden',
 	position: 'relative',
 };

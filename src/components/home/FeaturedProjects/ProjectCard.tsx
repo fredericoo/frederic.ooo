@@ -55,7 +55,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 						alt={image.alt}
 						layout="fill"
 						objectFit="cover"
-						sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 512px, 256px'}
+						sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 1024px, 512px'}
 						quality={100}
 					/>
 				)}

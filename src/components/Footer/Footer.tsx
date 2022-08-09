@@ -14,6 +14,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((_, ref) => {
 				textAlign: 'center',
 				paddingBlock: '$6',
 				fontSize: '$sm',
+				lineHeight: '$wide',
 				zIndex: -1,
 				position: 'fixed',
 				bottom: 0,
@@ -28,7 +29,10 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((_, ref) => {
 				>
 					pictures of my cats
 				</Link>
-				! 🐈‍⬛ 🐈‍⬛ 🐈
+				!{' '}
+				<Box as="span" css={{ display: 'inline-block' }}>
+					🐈‍⬛ 🐈‍⬛ 🐈
+				</Box>
 			</Container>
 		</Box>
 	);

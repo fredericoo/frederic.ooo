@@ -22,5 +22,8 @@
 	},
 	"jest.enableCodeLens": true,
 	"jest.testExplorer": { "enabled": true, "showInlineError": true },
-	"window.commandCenter": true
+	"window.commandCenter": true,
+	"[svg]": {
+		"editor.defaultFormatter": "jock.svg"
+	}
 }
