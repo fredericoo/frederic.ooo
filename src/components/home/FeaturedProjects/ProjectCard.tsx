@@ -34,6 +34,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 			<Box
 				onClick={onClickHeader}
 				css={{
+					cursor: 'pointer',
 					height: !isOpen ? CARD_HEIGHT : '0px',
 					willChange: 'height',
 					_transition: '.6s $expo',
