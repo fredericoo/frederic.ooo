@@ -17,6 +17,9 @@ const projectTags = createTags({
 	chakraUi: { text: 'Chakra UI' },
 	cssModules: { text: 'CSS Modules' },
 
+	framerMotion: { text: 'Framer Motion' },
+	reactSpring: { text: 'React Spring' },
+
 	postgres: { text: 'PostgreSQL' },
 	node: { text: 'Node.js' },
 	i18n: { text: 'i18n' },
