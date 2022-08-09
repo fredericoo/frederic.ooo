@@ -8,6 +8,11 @@ export default class Document extends NextDocument {
 		return (
 			<Html lang="en">
 				<Head>
+					<meta name="robots" content="index,follow" />
+					<meta name="twitter:card" content="summary_large_image" />
+					<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+					<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+					<link rel="mask-icon" href="favicon.svg" />
 					<svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{ display: 'none' }}>
 						<symbol id="arrow" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -16,8 +21,6 @@ export default class Document extends NextDocument {
 							/>
 						</symbol>
 					</svg>
-					<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
-					<link rel="icon" href="/favicon.svg" />
 				</Head>
 				<body>
 					<Main />
