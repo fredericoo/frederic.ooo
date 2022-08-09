@@ -20,8 +20,8 @@ const Tag = styled(Box, {
 const CARD_HEIGHT = '18rem';
 
 const iconVariants: Record<'hover' | 'active', Parameters<typeof Box>[0]['css']> = {
-	hover: { '--scale': '$sizes$scaleHover', backgroundColor: '$primary6' },
-	active: { '--scale': '$sizes$scaleActive', backgroundColor: '$primary7' },
+	hover: { transform: 'scale($sizes$scaleHover)', backgroundColor: '$primary6' },
+	active: { transform: 'scale($sizes$scaleActive)', backgroundColor: '$primary7' },
 };
 
 const ProjectThumb: React.FC<ProjectThumbProps> = props => {
@@ -79,22 +79,29 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				<Box
 					className="icon-plus"
 					css={{
-						'--scale': '1',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
 						borderRadius: '$rounded',
 						backgroundColor: '$primary4',
-						textDecoration: 'none',
-						aspectRatio: '1',
-						width: '2rem',
-						fontSize: '1.5rem',
 						color: '$primary12',
-						transform: isOpen ? 'rotate(45deg) scale(var(--scale))' : 'rotate(0deg) scale(var(--scale))',
-						_transition: 'transform 1.5s $expo',
+						transform: '1',
+						_transition: 'transform 0.6s $expo',
 					}}
 				>
-					+
+					<Box
+						css={{
+							aspectRatio: '1',
+							width: '2em',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
+							_transition: 'transform 1.5s $expo',
+						}}
+					>
+						<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+							<line y1="6" x2="12" y2="6" stroke="currentColor" />
+							<line x1="6" x2="6" y2="12" stroke="currentColor" />
+						</svg>
+					</Box>
 				</Box>
 			</Stack.H>
 

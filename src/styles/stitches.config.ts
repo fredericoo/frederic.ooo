@@ -30,7 +30,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 		},
 		sizes: {
 			container: '1366px',
-			scaleHover: '1.1',
+			scaleHover: '1.2',
 			scaleActive: '0.95',
 		},
 		letterSpacings: {
