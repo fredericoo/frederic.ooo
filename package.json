@@ -22,6 +22,7 @@
 		"react": "npm:@preact/compat@17.1.1",
 		"react-dom": "npm:@preact/compat@17.1.1",
 		"react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
+		"sharp": "^0.30.7",
 		"stitches-reset": "^1.0.0",
 		"webpack": "^5.74.0"
 	},

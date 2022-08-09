@@ -60,7 +60,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 			}}
 		>
 			<Border />
-			<Frame role="decoration" />
+			<Frame role="presentation" />
 			{children}
 			<Footer ref={ref} />
 		</Box>

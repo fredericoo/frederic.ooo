@@ -17,7 +17,7 @@ const RoleCard: React.FC<RoleCardProps> = ({ year, companyName, position, descri
 							<Box as="dt" css={{ display: 'none' }}>
 								Duration (year)
 							</Box>
-							{year.start === year.end ? year.start : [year.start, year.end || 'current'].join('—')}
+							<Box as="dd">{year.start === year.end ? year.start : [year.start, year.end || 'current'].join('—')}</Box>
 						</Box>
 					)}
 				</Stack.V>

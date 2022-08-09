@@ -4,10 +4,18 @@ import ProfessionalExperienceSection from '@/components/home/ProfessionalExperie
 import SkillsSection from '@/components/home/SkillsSection';
 import { Box, Container, Grid, Heading, Stack } from '@/components/primitives';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
 	return (
 		<Container css={{ paddingBlock: '$12' }}>
+			<Head>
+				<title>Freddie’s portfolio</title>
+				<meta
+					name="description"
+					content="hey! I’m Freddie, a creative developer obsessed with experimentation & new technologies."
+				/>
+			</Head>
 			<Stack.V css={{ gap: '$16' }}>
 				<Grid
 					as="section"

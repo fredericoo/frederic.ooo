@@ -20,7 +20,8 @@ const SocialLink = styled('a', {
 		backgroundColor: '$primary6',
 	},
 	_focusVisible: {
-		backgroudColor: '$primary12',
+		color: '$primary1',
+		backgroundColor: '$primary12',
 	},
 	_active: {
 		transform: 'scale(0.95)',
@@ -48,6 +49,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 						layout="fill"
 						alt="Freddie"
 						sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 128px, 64px'}
+						quality={100}
 					/>
 				</Box>
 				<Heading size="md" as="h2">
@@ -62,8 +64,12 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 			<Stack.V as="dl" css={{ gap: '$2' }}>
 				{Object.entries(details).map(([key, value]) => (
 					<Stack.H key={key} css={{ justifyContent: 'space-between' }}>
-						<Type css={{ color: '$primary12', textTransform: 'lowercase', fontWeight: '$bold' }}>{key}</Type>
-						<Type css={{ color: '$primary12' }}>{value}</Type>
+						<Type as="dt" css={{ color: '$primary12', textTransform: 'lowercase', fontWeight: '$bold' }}>
+							{key}
+						</Type>
+						<Type as="dd" css={{ color: '$primary12' }}>
+							{value}
+						</Type>
 					</Stack.H>
 				))}
 			</Stack.V>

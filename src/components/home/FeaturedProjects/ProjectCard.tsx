@@ -49,7 +49,16 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 					_focusVisible: { '&~*>.icon-plus': { backgroundColor: '$primary12', color: '$primary1' } },
 				}}
 			>
-				{image && <Image src={image.src} alt={image.alt} layout="fill" objectFit="cover" />}
+				{image && (
+					<Image
+						src={image.src}
+						alt={image.alt}
+						layout="fill"
+						objectFit="cover"
+						sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 512px, 256px'}
+						quality={100}
+					/>
+				)}
 			</Box>
 
 			<Stack.H
@@ -76,7 +85,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 							<Box as="dt" css={{ display: 'none' }}>
 								Duration (year)
 							</Box>
-							{year.start === year.end ? year.start : [year.start, year.end || 'current'].join('—')}
+							<Box as="dd">{year.start === year.end ? year.start : [year.start, year.end || 'current'].join('—')}</Box>
 						</Box>
 					)}
 				</Stack.V>
