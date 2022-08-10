@@ -2,7 +2,7 @@ import FeaturedProjects from '@/components/home/FeaturedProjects';
 import InfoBox from '@/components/home/InfoBox';
 import ProfessionalExperienceSection from '@/components/home/ProfessionalExperienceSection';
 import SkillsSection from '@/components/home/SkillsSection';
-import { Box, Container, Grid, Heading, Stack } from '@/components/primitives';
+import { Box, Container, Grid, Heading, NoBreak, Stack } from '@/components/primitives';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -34,7 +34,8 @@ const Home: NextPage = () => {
 						<Heading as="h1" size="xl" css={{ paddingInlineStart: '$6' }}>
 							👋
 							<br />
-							hey! I’m Freddie, a creative developer obsessed with experimentation & new technologies.
+							hey! I’m Freddie, a creative developer obsessed with experimentation & <NoBreak>new technologies</NoBreak>
+							.
 						</Heading>
 					</Box>
 					<InfoBox />

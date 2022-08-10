@@ -41,6 +41,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 						backgroundColor: '$primary4',
 						position: 'relative',
 						overflow: 'hidden',
+						willChange: 'transform',
 					}}
 				>
 					<Image

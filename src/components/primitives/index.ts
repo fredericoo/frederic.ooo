@@ -4,7 +4,8 @@ import Grid from './Grid';
 import Heading from './Heading';
 import Image from './Image';
 import Link from './Link';
+import NoBreak from './NoBreak';
 import Stack from './Stack';
 import Type from './Type';
 
-export { Stack, Box, Container, Heading, Type, Grid, Link, Image };
+export { Stack, Box, Container, Heading, Type, Grid, Link, Image, NoBreak };

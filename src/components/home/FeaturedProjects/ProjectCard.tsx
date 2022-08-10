@@ -29,13 +29,12 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 	const { image, title, year, description, tags, link, isOpen, onClickHeader } = props;
 
 	return (
-		<Card.Wrapper as="article">
+		<Card.Wrapper as="article" css={{ willChange: 'transform' }}>
 			<Box
 				onClick={onClickHeader}
 				css={{
 					cursor: 'pointer',
 					height: !isOpen ? CARD_HEIGHT : '0px',
-					willChange: 'height',
 					_transition: '.6s $expo',
 					position: 'relative',
 					backgroundColor: '$primary6',
