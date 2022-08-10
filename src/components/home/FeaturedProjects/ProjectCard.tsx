@@ -92,7 +92,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				<PlusButton isOpen={isOpen === true} />
 			</Stack.H>
 
-			<Stack.V
+			<Box
 				aria-hidden={!isOpen}
 				css={{
 					height: 0,
@@ -102,7 +102,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 					_transition: '.6s $expo',
 				}}
 			>
-				<Box css={{ position: 'absolute', inset: 0 }}>
+				<Stack.V css={{ position: 'absolute', inset: 0 }}>
 					<Card.Divider />
 
 					<Stack.V css={{ flexGrow: '1', padding: '$6', gap: '$4' }}>
@@ -136,8 +136,8 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 							</Stack.H>
 						</Box>
 					)}
-				</Box>
-			</Stack.V>
+				</Stack.V>
+			</Box>
 		</Card.Wrapper>
 	);
 };
