@@ -122,15 +122,18 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 					{link && (
 						<Box css={{ flexShrink: '0', padding: '$6' }}>
 							<Type css={{ fontSize: '$sm' }}>View it live</Type>
-							<Link
-								href={link.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								css={{ fontWeight: '$bold', fontFamily: '$display' }}
-								tabIndex={isOpen ? 0 : -1}
-							>
-								{urlToDisplay(link.href)} <Arrow />
-							</Link>
+							<Stack.H css={{ gap: '$1' }}>
+								<Link
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									css={{ fontWeight: '$bold', fontFamily: '$display' }}
+									tabIndex={isOpen ? 0 : -1}
+								>
+									{urlToDisplay(link.href)}
+								</Link>
+								<Arrow />
+							</Stack.H>
 						</Box>
 					)}
 				</Box>
