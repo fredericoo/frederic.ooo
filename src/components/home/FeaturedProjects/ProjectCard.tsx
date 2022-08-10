@@ -1,10 +1,9 @@
 import Card from '@/components/Card';
-import { Box, Heading, Link, Stack, Type } from '@/components/primitives';
+import { Box, Heading, Image, Link, Stack, Type } from '@/components/primitives';
 import projectTags from '@/content/tags';
 import type { Project } from '@/content/types';
 import { urlToDisplay } from '@/lib/utils';
 import { styled } from '@/styles';
-import Image from 'next/image';
 import Arrow from './Arrow';
 import PlusButton from './PlusButton';
 
@@ -30,7 +29,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 	const { image, title, year, description, tags, link, isOpen, onClickHeader } = props;
 
 	return (
-		<Card.Wrapper>
+		<Card.Wrapper as="article">
 			<Box
 				onClick={onClickHeader}
 				css={{

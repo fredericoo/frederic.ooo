@@ -1,7 +1,6 @@
 import { details, socials } from '@/content/social';
 import { styled } from '@/styles';
-import Image from 'next/image';
-import { Box, Heading, Stack, Type } from '../primitives';
+import { Box, Heading, Image, Stack, Type } from '../primitives';
 
 const Wrapper = styled(Stack.V, { gap: '$12', borderRadius: '$lg', backgroundColor: '$primary1', padding: '$6' });
 const SocialLink = styled('a', {
@@ -45,6 +44,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 					}}
 				>
 					<Image
+						priority={true}
 						src="/avatar-freddie.png"
 						layout="fill"
 						alt="Freddie"
