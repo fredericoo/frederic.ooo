@@ -2,7 +2,7 @@ import Card from '@/components/Card';
 import { Box, Heading, Image, Link, Stack, Type } from '@/components/primitives';
 import projectTags from '@/content/tags';
 import type { Project } from '@/content/types';
-import { urlToDisplay } from '@/lib/utils';
+import { hideScrollbarStyles, urlToDisplay } from '@/lib/utils';
 import { styled } from '@/styles';
 import Arrow from './Arrow';
 import PlusButton from './PlusButton';
@@ -99,13 +99,21 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 					paddingBlockEnd: isOpen ? CARD_RATIO : '0',
 					position: 'relative',
 					overflow: 'hidden',
-					_transition: '.6s $expo',
+					_transition: 'padding .6s $expo',
 				}}
 			>
 				<Stack.V css={{ position: 'absolute', inset: 0 }}>
 					<Card.Divider />
 
-					<Stack.V css={{ flexGrow: '1', padding: '$6', gap: '$4' }}>
+					<Stack.V
+						css={{
+							flex: '1',
+							overflow: 'scroll',
+							...hideScrollbarStyles,
+							padding: '$6',
+							gap: '$4',
+						}}
+					>
 						{description && <Type>{description}</Type>}
 						<Stack.H css={{ gap: '$1', flexWrap: 'wrap' }}>
 							{tags?.map(tagName => {
@@ -119,8 +127,9 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 						</Stack.H>
 					</Stack.V>
 
+					<Card.Divider />
 					{link && (
-						<Box css={{ flexShrink: '0', padding: '$6' }}>
+						<Box css={{ flexShrink: '1', overflow: 'hidden', padding: '$6' }}>
 							<Type css={{ fontSize: '$sm' }}>View it live</Type>
 							<Stack.H css={{ gap: '$1' }}>
 								<Link
