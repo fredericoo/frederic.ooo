@@ -18,7 +18,7 @@ const Tag = styled(Box, {
 	fontSize: '$sm',
 });
 
-const CARD_HEIGHT = '18rem';
+const CARD_RATIO = `${(1697 / 2400) * 100}%`;
 
 const iconVariants: Record<'hover' | 'active', Parameters<typeof Box>[0]['css']> = {
 	hover: { transform: 'scale($sizes$scaleHover)', backgroundColor: '$primary6' },
@@ -34,7 +34,9 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				onClick={onClickHeader}
 				css={{
 					cursor: 'pointer',
-					height: !isOpen ? CARD_HEIGHT : '0px',
+					height: 0,
+					paddingBlockEnd: !isOpen ? CARD_RATIO : '0',
+					willChange: 'transform',
 					_transition: '.6s $expo',
 					position: 'relative',
 					backgroundColor: '$primary6',
@@ -92,38 +94,46 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 
 			<Stack.V
 				aria-hidden={!isOpen}
-				css={{ height: isOpen ? CARD_HEIGHT : '0px', _transition: '.6s $expo', overflow: 'hidden' }}
+				css={{
+					height: 0,
+					paddingBlockEnd: isOpen ? CARD_RATIO : '0',
+					position: 'relative',
+					overflow: 'hidden',
+					_transition: '.6s $expo',
+				}}
 			>
-				<Card.Divider />
+				<Box css={{ position: 'absolute', inset: 0 }}>
+					<Card.Divider />
 
-				<Stack.V css={{ flexGrow: '1', padding: '$6', gap: '$4' }}>
-					{description && <Type>{description}</Type>}
-					<Stack.H css={{ gap: '$1', flexWrap: 'wrap' }}>
-						{tags?.map(tagName => {
-							const tag = projectTags[tagName];
-							return (
-								<Tag key={tagName} css={'color' in tag ? { backgroundColor: tag.color } : undefined}>
-									{tag.text}
-								</Tag>
-							);
-						})}
-					</Stack.H>
-				</Stack.V>
+					<Stack.V css={{ flexGrow: '1', padding: '$6', gap: '$4' }}>
+						{description && <Type>{description}</Type>}
+						<Stack.H css={{ gap: '$1', flexWrap: 'wrap' }}>
+							{tags?.map(tagName => {
+								const tag = projectTags[tagName];
+								return (
+									<Tag key={tagName} css={'color' in tag ? { backgroundColor: tag.color } : undefined}>
+										{tag.text}
+									</Tag>
+								);
+							})}
+						</Stack.H>
+					</Stack.V>
 
-				{link && (
-					<Box css={{ flexShrink: '0', padding: '$6' }}>
-						<Type css={{ fontSize: '$sm' }}>View it live</Type>
-						<Link
-							href={link.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							css={{ fontWeight: '$bold', fontFamily: '$display' }}
-							tabIndex={isOpen ? 0 : -1}
-						>
-							{urlToDisplay(link.href)} <Arrow />
-						</Link>
-					</Box>
-				)}
+					{link && (
+						<Box css={{ flexShrink: '0', padding: '$6' }}>
+							<Type css={{ fontSize: '$sm' }}>View it live</Type>
+							<Link
+								href={link.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								css={{ fontWeight: '$bold', fontFamily: '$display' }}
+								tabIndex={isOpen ? 0 : -1}
+							>
+								{urlToDisplay(link.href)} <Arrow />
+							</Link>
+						</Box>
+					)}
+				</Box>
 			</Stack.V>
 		</Card.Wrapper>
 	);
