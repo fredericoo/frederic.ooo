@@ -29,7 +29,7 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 	const { image, title, year, description, tags, link, isOpen, onClickHeader } = props;
 
 	return (
-		<Card.Wrapper as="article" css={{ height: 0, paddingBlockEnd: `calc(${CARD_RATIO} + 88px)`, overflow: 'hidden' }}>
+		<Card.Wrapper as="article" css={{ height: 0, paddingBlockEnd: `calc(${CARD_RATIO} + 88px)`, isolation: 'isolate' }}>
 			<Box
 				onClick={onClickHeader}
 				css={{
