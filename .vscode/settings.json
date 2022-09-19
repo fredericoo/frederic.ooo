@@ -25,5 +25,13 @@
 	"window.commandCenter": true,
 	"[svg]": {
 		"editor.defaultFormatter": "jock.svg"
-	}
+	},
+	"vitest.commandLine": "pnpm test",
+	"vitest.exclude": [
+		"**/e2e/**",
+		"**/node_modules/**",
+		"**/dist/**",
+		"**/cypress/**",
+		"**/.{idea,git,cache,output,temp}/**"
+	]
 }
