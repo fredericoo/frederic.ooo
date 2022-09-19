@@ -11,7 +11,8 @@
 		"prepare": "husky install",
 		"ts-check": "tsc --noEmit",
 		"test": "vitest --config ./vitest.config.ts",
-		"coverage": "vitest run --coverage"
+		"coverage": "vitest run --coverage",
+		"e2e": "playwright test"
 	},
 	"dependencies": {
 		"@prefresh/babel-plugin": "^0.4.3",
