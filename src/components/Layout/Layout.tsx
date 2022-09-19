@@ -1,4 +1,4 @@
-import useElementSize from '@/lib/useElementHeight';
+import { useRects } from '@/lib/useRects';
 import { styled } from '@/styles';
 import type { ReactNode } from 'react';
 import Footer from '../Footer';
@@ -41,10 +41,7 @@ const Border: React.FC = () => (
 );
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-	const {
-		ref,
-		size: { height: footerHeight },
-	} = useElementSize();
+	const [rects, setRects] = useRects();
 
 	return (
 		<Box
@@ -55,14 +52,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 					minHeight: '100lvh',
 				},
 				backgroundColor: '$primary3',
-				marginBlockEnd: footerHeight,
+				marginBlockEnd: rects.footer?.height,
 				position: 'relative',
 			}}
 		>
 			<Border />
 			<Frame role="presentation" />
 			{children}
-			<Footer ref={ref} />
+			<Footer ref={setRects('footer')} />
 		</Box>
 	);
 };

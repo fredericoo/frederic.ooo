@@ -13,7 +13,7 @@ const projects: Project[] = [
 	{
 		title: 'Curta Circuito',
 		year: { start: 2020, end: 2021 },
-		link: { href: 'https://www.curtacircuito.com.br/' },
+		link: { href: 'https://curta-circuito-2021.vercel.app' },
 		description:
 			'Yearly film festival that had to reinvent itself during the pandemic by airing the films live alongside podcasts and other activities.',
 		tags: ['design', 'chakraUi', 'prismic', 'nextjs', 'typescript', 'vercel'],

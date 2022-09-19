@@ -53,7 +53,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 			}),
 		},
 		shadows: {
-			sm: '0px 24px 42px rgba(0, 0, 0, 0.0168687), 0px 10.0266px 17.5466px rgba(0, 0, 0, 0.0242336), 0px 5.36071px 9.38125px rgba(0, 0, 0, 0.03), 0px 3.00517px 5.25905px rgba(0, 0, 0, 0.0357664), 0px 1.59602px 2.79304px rgba(0, 0, 0, 0.0431313), 0px 0.664142px 1.16225px rgba(0, 0, 0, 0.06)',
+			lg: '0px 91px 201px rgba(0, 0, 0, 0.09), 0px 38.0176px 83.973px rgba(0, 0, 0, 0.0646969), 0px 20.326px 44.896px rgba(0, 0, 0, 0.0536497), 0px 11.3946px 25.1683px rgba(0, 0, 0, 0.045), 0px 6.05159px 13.3667px rgba(0, 0, 0, 0.0363503), 0px 2.5182px 5.56219px rgba(0, 0, 0, 0.0253031)',
 		},
 		radii: {
 			rounded: '999rem',
