@@ -1,0 +1,25 @@
+name: End-to-end tests
+
+on:
+  deployment_status:
+    
+  run-e2es:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - name: Install dependencies
+        run: pnpm install
+    - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+    - name: Run Playwright tests
+        run: pnpx playwright test
+          env:
+              BASE_URL: ${{ github.event.deployment_status.target_url }}
