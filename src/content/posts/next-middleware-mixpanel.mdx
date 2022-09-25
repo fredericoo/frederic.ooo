@@ -1,0 +1,24 @@
+---
+title: Tracking users shipping zero JavaScript with Next.js middleware
+publishedOn: 2022-09-22
+tags: ['nextjs', 'middleware', 'analytics', 'mixpanel']
+excerpt: Know which pages your users are visiting without shipping any JavaScript to them.
+---
+
+There’s a bit of research somewhere proving that when your picture is liked on Instagram, you get a rush of addrenaline. Well I’d much rather have my website visited instead. Differently than Instagram, though, you will not get a notification when your site is accessed; that’s something one would have to manually set up.
+
+## Mixpanel is a pretty decent analytics tool
+
+There are plenty of solutions around, and one of my favourites is [Mixpanel](https://mixpanel.com/). It has a generous free tier, you can create custom dashboards with it, and it has a beautiful UI.
+The big caveat being if you wanna track your users you need javascript code on the client side to read user data, aggregate it and make periodic HTTP calls to mixpanel, which can:
+
+- bring your TTI (Time to Interactive) down due to a delayed hydration
+- increase the amount of js you’re shipping to your users
+- be blocked by adblockers
+
+## Don’t touch my static site
+
+If you’re developing a website with React, chances are nowadays you’ll be joining the meta-frameworks wagon and go for either Remix, or Next. I chose Next for this particular website because I want it to serve static pages. When serving static assets and pages you’re technically forced to track your users on the client, as there’s literally zero server processing on the assets.
+Enter Next.js middleware: a way to run code on the server side as you serve your user with static assets. Which means with one function you can track your users page views without sacrificing performance, or risking being blocked.
+
+## How to track your users with Next.js middleware

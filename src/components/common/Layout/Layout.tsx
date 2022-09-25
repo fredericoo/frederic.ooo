@@ -1,8 +1,9 @@
+import { Box } from '@/components/primitives';
 import { useRects } from '@/lib/useRects';
 import { styled } from '@/styles';
 import type { ReactNode } from 'react';
 import Footer from '../Footer';
-import { Box } from '../primitives';
+import Navbar from '../Navbar';
 
 type LayoutProps = {
 	children: ReactNode;
@@ -34,6 +35,7 @@ const Border: React.FC = () => (
 			position: 'absolute',
 			inset: '0 $1',
 			overflow: 'hidden',
+			zIndex: 50,
 		}}
 	>
 		<Box css={{ position: 'absolute', inset: 0, ...borderProps }} />
@@ -56,6 +58,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 				position: 'relative',
 			}}
 		>
+			<Navbar />
 			<Border />
 			<Frame role="presentation" />
 			{children}

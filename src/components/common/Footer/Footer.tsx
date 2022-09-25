@@ -1,5 +1,5 @@
+import { Box, Container, Link } from '@/components/primitives';
 import { forwardRef } from 'react';
-import { Box, Container, Link } from '../primitives';
 
 type FooterProps = {};
 
@@ -12,7 +12,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((_, ref) => {
 				backgroundColor: '$primary12',
 				color: '$primary11',
 				textAlign: 'center',
-				paddingBlock: '$6',
+				paddingBlock: '$6 calc(env(safe-area-inset-bottom) + $space$20)',
 				fontSize: '$sm',
 				lineHeight: '$wide',
 				zIndex: -1,

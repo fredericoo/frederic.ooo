@@ -1,6 +1,6 @@
+import Section from '@/components/common/Section';
 import { Grid } from '@/components/primitives';
 import skillCategories from '@/content/skills';
-import Section from '../Section';
 import SkillCard from './SkillCard';
 
 type SkillsSectionProps = {};

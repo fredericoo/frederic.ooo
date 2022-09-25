@@ -1,6 +1,6 @@
+import Section from '@/components/common/Section';
 import { Grid } from '@/components/primitives';
 import experience from '@/content/experience';
-import Section from '../Section';
 import RoleCard from './RoleCard';
 
 type ProfessionalExperienceSectionProps = {};

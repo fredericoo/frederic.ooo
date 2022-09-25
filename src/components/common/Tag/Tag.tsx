@@ -1,5 +1,5 @@
+import { Box } from '@/components/primitives';
 import { styled } from '@/styles/stitches.config';
-import { Box } from '../primitives';
 
 const Tag = styled(Box, {
 	textTransform: 'lowercase',

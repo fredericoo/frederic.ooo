@@ -1,13 +1,20 @@
 import { Box } from '@/components/primitives';
+import type { ComponentVariant } from '@/lib/types';
 
-type PlusButtonProps = {
+type ToggleButtonProps = {
+	className?: string;
 	isOpen: boolean;
 };
 
-const PlusButton: React.FC<PlusButtonProps> = ({ isOpen }) => {
+export const toggleButtonVariants: ComponentVariant<'hover' | 'active'> = {
+	hover: { transform: 'scale($sizes$scaleHover)', backgroundColor: '$primary6' },
+	active: { transrform: 'scale($sizes$scaleActive)', backgroundColor: '$primary7' },
+};
+
+const ToggleButton: React.FC<ToggleButtonProps> = ({ className, isOpen }) => {
 	return (
 		<Box
-			className="icon-plus"
+			className={className}
 			css={{
 				borderRadius: '$rounded',
 				backgroundColor: '$primary4',
@@ -37,4 +44,4 @@ const PlusButton: React.FC<PlusButtonProps> = ({ isOpen }) => {
 	);
 };
 
-export default PlusButton;
+export default ToggleButton;

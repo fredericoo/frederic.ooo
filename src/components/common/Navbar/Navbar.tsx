@@ -7,12 +7,12 @@ import NavbarItem from './NavbarItem';
 
 const navbarItems: { label: string | ReactElement; href: string; exact?: boolean }[] = [
 	{ label: 'about', href: '/', exact: true },
-	{ label: 'posts', href: '/projects' },
+	{ label: 'projects', href: '/projects' },
+	{ label: 'posts', href: '/posts' },
 ];
 
 const Navbar: React.FC = () => {
 	const { asPath } = useRouter();
-
 	const [rects, setRect] = useRects();
 
 	const selected = useMemo(() => {
@@ -28,7 +28,13 @@ const Navbar: React.FC = () => {
 						ref={setRect(item.href)}
 						key={item.href}
 						href={item.href}
-						status={item.href === selected?.href ? 'active' : 'inactive'}
+						status={
+							asPath.includes(item.href) && item.href.length > 1 && asPath !== item.href
+								? 'inside'
+								: item.href === selected?.href
+								? 'active'
+								: 'inactive'
+						}
 					>
 						{item.label}
 					</NavbarItem>

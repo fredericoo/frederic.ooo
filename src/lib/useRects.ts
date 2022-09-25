@@ -32,5 +32,6 @@ export const useRects = () => {
 		(key: string) => (node?: HTMLElement | null) => {
 			ref.current[key] = node || null;
 		},
+		recalculate,
 	] as const;
 };

@@ -1,5 +1,5 @@
 import { styled } from '@/styles';
-import { Box, Stack } from '../primitives';
+import { Box, Stack } from '../../primitives';
 
 export const cardWrapperStyles: Parameters<typeof Stack.V>[0]['css'] = {
 	backgroundColor: '$primary1',

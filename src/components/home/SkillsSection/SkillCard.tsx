@@ -1,6 +1,6 @@
-import Card from '@/components/Card';
+import Card from '@/components/common/Card';
+import Tag from '@/components/common/Tag';
 import { Heading, Stack } from '@/components/primitives';
-import Tag from '@/components/Tag';
 import type { Skill } from '@/content/types';
 
 type SkillCardProps = {

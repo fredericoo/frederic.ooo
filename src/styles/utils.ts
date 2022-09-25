@@ -1,5 +1,5 @@
 import type { AnyObject } from '@/lib/types';
-import type { PropertyValue } from '@stitches/react';
+import type { CSS, PropertyValue } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
 import type { N } from 'ts-toolbelt';
 
@@ -55,6 +55,19 @@ const utils: ConfigType.Utils = {
 		WebkitUserSelect: value,
 		userSelect: value,
 	}),
+
+	hideScrollbars: (shouldHide: boolean): CSS =>
+		shouldHide
+			? {
+					msOverflowStyle: '-ms-autohiding-scrollbar',
+					WebkitOverflowScrolling: 'touch',
+					scrollbarWidth: 'none',
+					overflow: 'auto',
+					'&::-webkit-scrollbar': {
+						display: 'none',
+					},
+			  }
+			: {},
 };
 
 export const buildScale = <TKey, TValue>(params: {

@@ -1,8 +1,8 @@
+import { Type } from '@/components/primitives';
 import { styled } from '@/styles';
 import Link from 'next/link';
 import type { PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
-import { Type } from '../primitives';
 
 const Item = styled('a', {
 	display: 'block',
@@ -37,16 +37,18 @@ const Label = styled(Type, {
 
 type NavbarItemProps = {
 	href: string;
-	status: 'active' | 'inactive';
+	status: 'active' | 'inactive' | 'inside';
 };
 const NavbarItem = forwardRef<HTMLAnchorElement, PropsWithChildren<NavbarItemProps>>(
-	({ children, status, href }, ref) => (
-		<Link href={href} passHref>
-			<Item aria-current={status === 'active'} ref={ref}>
-				<Label as="span">{children}</Label>
-			</Item>
-		</Link>
-	)
+	({ children, status, href }, ref) => {
+		return (
+			<Link href={href} passHref>
+				<Item aria-current={status === 'active' ? 'true' : undefined} ref={ref}>
+					<Label as="span">{children}</Label>
+				</Item>
+			</Link>
+		);
+	}
 );
 
 NavbarItem.displayName = 'NavbarItem';

@@ -1,9 +1,10 @@
+import { Box } from '@/components/primitives';
 import { styled } from '@/styles';
-import { Box } from '../primitives';
 
 export const Viewport = styled(Box, {
 	position: 'fixed',
-	bottom: 'calc(env(safe-area-inset-bottom) + $space$4)',
+	bottom: 0,
+	paddingBlockEnd: 'calc(env(safe-area-inset-bottom) + $space$4)',
 	paddingInline: '$8',
 	left: 0,
 	right: 0,
@@ -14,7 +15,7 @@ export const Viewport = styled(Box, {
 });
 
 export const Wrapper = styled(Box, {
-	padding: '$1',
+	padding: '2px',
 	boxShadow: '$lg',
 	borderRadius: '$rounded',
 	display: 'flex',
@@ -30,6 +31,6 @@ export const SelectedRect = styled(Box, {
 	zIndex: '0',
 	pointerEvents: 'none',
 	transition: 'all 0.6s $expo',
-	top: 3,
-	bottom: 3,
+	top: 2,
+	bottom: 2,
 });

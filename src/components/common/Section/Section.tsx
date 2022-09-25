@@ -1,5 +1,5 @@
+import { Heading, Stack } from '@/components/primitives';
 import type { ReactNode } from 'react';
-import { Heading, Stack } from '../primitives';
 
 type SectionProps = {
 	title: string;
