@@ -13,7 +13,7 @@ const getPostData = async (file: fs.Dirent) => {
 	const { text } = readingTime(code);
 	const slug = file.name.replace(/.mdx$/, '');
 
-	return { code, meta, slug, readingTime: text };
+	return { code, meta: { ...meta, readingTime: text }, slug };
 };
 
 export type Post = Awaited<ReturnType<typeof getPostData>>;

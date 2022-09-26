@@ -1,26 +1,36 @@
-import type { ImageProps as NextImageProps } from 'next/image';
-import { default as NextImage } from 'next/image';
-import type { ComponentProps } from 'react';
+import { styled } from '@/styles';
+import { default as NextImage } from 'next/future/image';
 import { useState } from 'react';
-import Box from './Box';
 
-type ImageProps = NextImageProps & ComponentProps<typeof Box>;
+type ImageProps = {
+	src: string;
+	sizes?: string;
+	alt: string;
+	height: number | string;
+	width: number | string;
+	priority?: boolean;
+};
+
+const ImageComponent = styled(NextImage, {
+	width: '100%',
+	height: 'auto',
+	variants: {
+		loaded: {
+			true: { _transition: '2s $expo', opacity: 1, filter: 'blur(0)' },
+			false: { opacity: 0, filter: 'blur(5px)' },
+		},
+	},
+});
 
 const Image: React.FC<ImageProps> = props => {
-	const { css, ...rest } = props;
 	const [hasImageLoaded, setHasImageLoaded] = useState(false);
 
 	return (
-		<Box
-			as={NextImage}
+		<ImageComponent
+			loaded={hasImageLoaded}
+			quality={100}
 			onLoadingComplete={() => setHasImageLoaded(true)}
-			css={{
-				...(hasImageLoaded
-					? { _transition: '2s $expo', opacity: 1, filter: 'blur(0)' }
-					: { opacity: 0, filter: 'blur(5px)' }),
-				...css,
-			}}
-			{...rest}
+			{...props}
 		/>
 	);
 };

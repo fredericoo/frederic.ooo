@@ -17,12 +17,9 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 				<Image
 					src={image.src}
 					alt={image.alt}
-					layout="responsive"
 					height={THUMB.height}
 					width={THUMB.width}
-					objectFit="cover"
 					sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 1024px, 512px'}
-					quality={100}
 				/>
 			)}
 

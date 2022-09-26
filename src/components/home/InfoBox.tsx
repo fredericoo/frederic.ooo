@@ -47,10 +47,10 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 					<Image
 						priority={true}
 						src="/avatar-freddie.png"
-						layout="fill"
 						alt="Freddie"
+						height={80}
+						width={80}
 						sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 128px, 64px'}
-						quality={100}
 					/>
 				</Box>
 				<Heading size="md" as="h2">

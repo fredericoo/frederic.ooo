@@ -1,25 +1,21 @@
-import { Box, Container } from '@/components/primitives';
+import PostCard from '@/components/posts/PostCard';
+import { Container, Grid } from '@/components/primitives';
 import type { Post } from '@/lib/posts.server';
 import { getAllPosts } from '@/lib/posts.server';
 import type { GetStaticProps } from 'next';
-import Link from 'next/link';
 
 type PostsPageProps = {
-	posts: Pick<Post, 'meta' | 'slug' | 'readingTime'>[];
+	posts: Pick<Post, 'meta' | 'slug'>[];
 };
 
 const PostsPage: React.FC<PostsPageProps> = ({ posts }) => {
 	return (
 		<Container css={{ paddingBlock: '$16' }}>
-			{posts.map(post => (
-				<Link href={`/posts/${post.slug}`} key={post.slug} passHref>
-					<Box as="a">
-						<h2>{post.meta.title}</h2>
-						<p>{post.meta.publishedOn}</p>
-						<p>{post.readingTime}</p>
-					</Box>
-				</Link>
-			))}
+			<Grid columns={{ '@bp2': 2 }}>
+				{posts.map(post => (
+					<PostCard key={post.slug} {...post.meta} slug={post.slug} />
+				))}
+			</Grid>
 		</Container>
 	);
 };
@@ -31,7 +27,7 @@ export const getStaticProps: GetStaticProps<PostsPageProps> = async () => {
 
 	return {
 		props: {
-			posts: posts.map(({ meta, slug, readingTime }) => ({ meta, slug, readingTime })),
+			posts: posts.map(({ meta, slug }) => ({ meta, slug })),
 		},
 	};
 };

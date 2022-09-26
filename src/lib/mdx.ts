@@ -1,6 +1,5 @@
 import { bundleMDX } from 'mdx-bundler';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeHighlight from 'rehype-highlight';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -21,13 +20,13 @@ const postMeta = z.object({
 export const readMdx = async (source: string) => {
 	const { code, frontmatter } = await bundleMDX({
 		source,
+		cwd: process.cwd(),
 		mdxOptions(options) {
 			options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkFrontmatter];
 			options.rehypePlugins = [
 				...(options.rehypePlugins ?? []),
 				rehypePrism,
 				rehypeSlug,
-				rehypeHighlight,
 				[
 					rehypeAutolinkHeadings,
 					{
@@ -37,6 +36,12 @@ export const readMdx = async (source: string) => {
 					},
 				],
 			];
+			return options;
+		},
+		esbuildOptions(options, frontmatter) {
+			options.minify = true;
+			options.target = ['esnext'];
+
 			return options;
 		},
 	});

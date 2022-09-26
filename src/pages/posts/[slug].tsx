@@ -1,4 +1,5 @@
-import { Container } from '@/components/primitives';
+import BlogLayout from '@/components/common/BlogLayout';
+import { Heading, Type } from '@/components/primitives';
 import type { Post } from '@/lib/posts.server';
 import { getAllPosts, getPost } from '@/lib/posts.server';
 import { getMDXComponent } from 'mdx-bundler/client';
@@ -12,12 +13,12 @@ const PostPage: React.FC<PostPageProps> = ({ code, meta }) => {
 	const Component = useMemo(() => getMDXComponent(code), [code]);
 
 	return (
-		<Container>
+		<BlogLayout meta={meta}>
 			<Head>
 				<title>{meta.title}</title>
 			</Head>
-			<Component />
-		</Container>
+			<Component components={{ p: Type, h2: Heading }} />
+		</BlogLayout>
 	);
 };
 
