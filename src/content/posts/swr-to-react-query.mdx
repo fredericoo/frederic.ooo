@@ -1,0 +1,199 @@
+---
+title: Making the jump from useSWR to react-query
+publishedOn: 2022-09-22
+tags: ['swr', 'react-query', '@tanstack/query', 'client', 'cache']
+excerpt: After much resistance motivated by bundle sizes and API simplicity, the time has come to adopt @tanstack/query.
+---
+
+## Setting the groundwork
+
+wrkplay is a side project of mine created to keep track of scores and who’s the best player in the office for a number of games we have available, such as ping pong, foosball, etc. In my app, you can see a **player ladder**, and the **recent matches** for a given game. These are fetched in parallel and are revalidated individually.
+Any user is also able to create a new match, by entering who they’ve played against, and the result. The list of possible opponents is also loaded programaticaly, and contains both the users **name** and **scores** for the given game, used to then give the user a preview of whether the teams are unbalanced or not.
+
+![wrkplay’s new match screen](/img/swr-to-react-query/opponents.png)
+
+## The problem
+
+When a player submits a new match, you’d expect them to also get a fresh load of data, with the updated rankings — neatly animated so you see yourself climbing up, hopefully — and the recently played match appearing at the very top of the latest matches section.
+Easy to understand, hard to do with [SWR](swr.vercel.app). When submitting, we end up having to do something like:
+
+```typescript {2-4, 8-10} showLineNumbers
+const Component = () => {
+	const { mutate: mutateLatestMatches } = useLatestMatches(); // this hook calls useSWRInfinite under the hood
+	const { mutate: mutateLeaderboard } = useLeaderboard(); // this hook calls useSWRInfinite under the hood
+	const { mutate: mutateOpponents } = useOpponents(); // this hook calls useSWRInfinite under the hood
+
+	const onSubmit = async values => {
+		await createMatch(values);
+		mutateLatestMatches();
+		mutateLeaderboard();
+		mutateOpponents();
+	};
+};
+```
+
+This will look weird. Why did I import three hooks only to invalidate them via the mutate function? I’m sure SWR offers a mutation by key option, right? Well, they do, but it is _so gimmicky_ with infinite queries:
+In this [issue](https://github.com/vercel/swr/issues/1670), it is taught as an undocumented feature to prefix your global mutate function with `$inf$`.
+You _still_ need to pass the dynamic key getter function. Quite shabby.
+
+As of the time I’m writing this, I have not yet replaced useSWR with react-query. Let’s see how it goes.
+
+## Main changes
+
+### Query keys
+
+The main point of react-query is invalidation, mutations and caching. The main point of SWR is being simple. Invalidating a query via SWR is a simple case of calling `mutate` on the key and it shall be done. Unless it’s an infinite query, in which case you better be prepared to jump through some hoops.
+Revalidating queries on react-query is an absolute bliss. **As keys are arrays** and not strings, one can add much rich data to it, and revalidation is excellent at finding the ones that need to be refreshed by comparing the keys and if one of the properties match, proceed with cache purging.
+
+### Fetcher functions
+
+At the core of SWR is the artifice of “the fetcher takes a key and outputs data.” I love this approach, as it makes complete sense and enables us to create a reusable fetcher function if your keys are literally your URLs. It does, though, only make sense in the universe of Next if you’re calling your own API routes.
+React-query extends on it with [Query Function Context](https://tanstack.com/query/v4/docs/guides/query-functions#queryfunctioncontext), where you can even handle aborting a query mid-flight. Not exactly using that, but I see that as a nice feature.
+
+## Bundle size
+
+As a totally-not-accurate initial measure, let's use VSCode’s import cost to measure the imports I'm using right now:
+
+```typescript
+import { SWRConfig } from 'swr'; // 9.8k (gzipped: 4.2k)
+import useSWR from 'swr'; // 10k (gzipped: 4.3k)
+import useSWRInfinite from 'swr/infinite'; // 14.4k (gzipped: 5.3k)
+```
+
+That's `13.8kB` gzipped.
+
+```typescript
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // 24.1k (gzipped: 6.8k)
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query'; // 17.8k (gzipped: 5.6k)
+```
+
+That's `12.4kB` gzipped.
+
+As the import from `@tanstack/react-query` is a single import, its tree-shaking and reusing of modules makes it _look smaller_. Let’s see how veridical that is.
+It is likely both SWR imports overlap in dependencies and common code, so the sizes are probably smaller than that.
+Building the app will give us a real measure:
+
+### Build size
+
+| Query library                 | Bundle size\* |
+| ----------------------------- | ------------- |
+| swr (1.1.1)                   | 303kB         |
+| @tanstack/react-query (4.8.0) | 309kB         |
+
+> \* `First Load JS shared by all` as yielded by `next build` on Next 12.3.1.
+
+As expected, @tanstack/react-query is larger than swr. In my particular use case, by 6kB. This is not a big deal, but it is something to keep in mind.
+
+## Verbosity
+
+SWR is overall more succinct. Even when using the infinite hook, you can achieve the same result with fewer lines of code.
+React query is more verbose, but it is also more explicit. You can see what’s going on, and you can see what’s happening under the hood and control pagination with a more intuitive set of parameters.
+
+Let’s take for example `useLeaderboard`, a hook that abstracts the querying library to infinite-scroll an offset-based list of players:
+
+```typescript showLineNumbers
+// swr
+import type {
+	LeaderboardGETAPIResponse,
+	LeaderboardGETOptions,
+} from '@/lib/api/handlers/leaderboard/getLeaderboardHandler';
+import type { SWRInfiniteResponse } from 'swr/infinite';
+import useSWRInfinite from 'swr/infinite';
+
+const getKey =
+	(options: Partial<LeaderboardGETOptions>) => (pageIndex: number, previousPageData: LeaderboardGETAPIResponse) => {
+		if (options.userId) return null;
+		if (!options.gameId && !options.userId) return null;
+		if (previousPageData && !previousPageData.pageInfo?.nextPage) return null; // reached the end
+		const queryParams = Object.entries({
+			page: pageIndex > 0 ? previousPageData?.pageInfo?.nextPage : undefined,
+			...options,
+		})
+			.filter(([, value]) => value)
+			.map(entry => entry.join('='))
+			.join('&');
+		return [`/api/leaderboard`, queryParams].join('?');
+	};
+
+type UseLeaderboard = (
+	options: Partial<Pick<LeaderboardGETOptions, 'gameId' | 'userId' | 'seasonId'>>
+) => SWRInfiniteResponse<LeaderboardGETAPIResponse>;
+
+const useLeaderboard: UseLeaderboard = options => {
+	return useSWRInfinite<LeaderboardGETAPIResponse>(getKey({ ...options, perPage: 20 }), {
+		refreshInterval: 1000 * 60,
+		revalidateAll: true,
+	});
+};
+
+export default useLeaderboard;
+```
+
+```typescript showLineNumbers
+// react-query
+import type {
+	LeaderboardGETAPIResponse,
+	LeaderboardGETOptions,
+} from '@/lib/api/handlers/leaderboard/getLeaderboardHandler';
+import { useInfiniteQuery } from '@tanstack/react-query';
+
+type UseLeaderboardParams = Partial<Pick<LeaderboardGETOptions, 'gameId' | 'userId' | 'seasonId'>>;
+
+const useLeaderboard = (options: UseLeaderboardParams) => {
+	return useInfiniteQuery(
+		['leaderboard', options],
+		async ({ pageParam = 1 }) => {
+			const searchParams = new URLSearchParams(JSON.parse(JSON.stringify(options)));
+			searchParams.set('perPage', '20');
+			pageParam && searchParams.set('page', pageParam);
+
+			const res: LeaderboardGETAPIResponse = await fetch([`/api/leaderboard`, searchParams.toString()].join('?')).then(
+				res => res.json()
+			);
+			return res;
+		},
+		{
+			refetchInterval: 1000 * 60,
+			getNextPageParam: lastPage => lastPage?.pageInfo?.nextPage,
+		}
+	);
+};
+
+export default useLeaderboard;
+```
+
+With 5 lines of difference, my personal take is that **SWR is mind boggling to actually understand what's going on with pagination**. One has to work around with lots of conditions for page numbers in the `getKey` function and leaving the fetcher a dumber component. React query has a smart fetcher, a super simple `getNextPageParam` function that feels more natural to me.
+
+## Devtools
+
+MY GOD. I must say I've defended swr in the past for being a simpler library for the majority of web uses, but after trying the dev tools I must say: it just makes my life so much easier.
+I instantly installed it the second I started refactoring my code, and it was instrumental to understand how cache invalidation, stale times and etc worked.
+I’m much more capable of testing refetching my queries mid flight and understanding what my "Refresh" button in the UI is doing to my queries.
+
+![react-query dev tools](/img/swr-to-react-query/dev-tools.png)
+
+## Final take
+
+SWR is probably more than enough if you just want to passively consume from an API. As soon as you introduce mutations, or need to invalidate cache on several places at once — which is quite common on medium to large apps — SWR starts to fall short.
+I do not regret reaching for SWR first, but as any codebase evolves it needs to change, and **replacing a library with a more robust one** is routine.
+
+There is no one-size-fits-all solution, and I’m sure there are many use cases where SWR is the best choice. But for my use case, I’m happy with the choice I made.
+
+## TL;DR
+
+- SWR is a great library for passive consumption of data from an API.
+- My app only increased in 6kB after refactoring from swr to react query.
+- React query has a fantastic devtools experience.
+- React query is more robust and has a more intuitive API for pagination.
+
+## The future
+
+I haven’t talked about RTK Query (not a big fan of Redux, myself), but it’s famously one of the big competitors for both libraries.
+There may be a new one coming our way, [xswr](https://github.com/hazae41/xswr). It has seen negative backlash after the author opted to personally attack both libs mentioned in this post as a strategy to gain popularity.
+
+<blockquote class="twitter-tweet">
+	<p lang="en" dir="ltr">
+		I wish it had ModuleSucksError when you try to import swr or react-query
+	</p>
+	&mdash; Haz Æ 41 (@hazae41) <a href="https://twitter.com/hazae41/status/1576549253388075009?ref_src=twsrc%5Etfw">October 2, 2022</a>
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

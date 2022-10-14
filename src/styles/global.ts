@@ -1,9 +1,39 @@
 import reset from './reset';
 import { globalCss } from './stitches.config';
 
+const prismStyles = {
+	pre: { overflowX: 'auto' },
+	'.code-highlight': { cssFloat: 'left', minWidth: '100%' },
+	'.code-line': {
+		display: 'block',
+		paddingLeft: '16px',
+		paddingRight: '16px',
+		marginLeft: '-16px',
+		marginRight: '-16px',
+		borderLeft: '4px solid rgba(0, 0, 0, 0)',
+	},
+	'.code-line.inserted': { backgroundColor: 'rgba(16, 185, 129, 0.2)' },
+	'.code-line.deleted': { backgroundColor: 'rgba(239, 68, 68, 0.2)' },
+	'.highlight-line': {
+		marginLeft: '-16px',
+		marginRight: '-16px',
+		backgroundColor: 'rgba(55, 65, 81, 0.5)',
+		borderLeft: '4px solid rgb(59, 130, 246)',
+	},
+	'.line-number::before': {
+		display: 'inline-block',
+		width: '1rem',
+		textAlign: 'right',
+		marginRight: '16px',
+		marginLeft: '-8px',
+		color: 'rgb(156, 163, 175)',
+		content: 'attr(line)',
+	},
+};
+
 const globalStyles = globalCss({
 	...reset,
-	html: { backgroundColor: '$primary12' },
+	html: { backgroundColor: 'black' },
 	body: {
 		WebkitTapHighlightColor: 'transparent',
 		MozOsxFontSmoothing: 'grayscale',
@@ -27,29 +57,30 @@ const globalStyles = globalCss({
 	'@font-face': [
 		{
 			fontFamily: 'neue-haas-grotesk-display',
-			src: 'url("https://use.typekit.net/af/1ba16c/00000000000000007735bb5a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/1ba16c/00000000000000007735bb5a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/1ba16c/00000000000000007735bb5a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype")',
+			src: 'url("/fonts/neue-haas-grotesk-display-medium.woff2") format("woff2"),url("/fonts/neue-haas-grotesk-display-medium.woff") format("woff"),url("/fonts/neue-haas-grotesk-display-medium.otf") format("opentype")',
 			fontWeight: '500',
 			fontDisplay: 'swap',
 		},
 		{
 			fontFamily: 'neue-haas-grotesk-display',
-			src: 'url("https://use.typekit.net/af/384d9b/00000000000000007735bb6a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/384d9b/00000000000000007735bb6a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/384d9b/00000000000000007735bb6a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype")',
+			src: 'url("/fonts/neue-haas-grotesk-text-bold.woff2") format("woff2"),url("/fonts/neue-haas-grotesk-text-bold.woff") format("woff"),url("/fonts/neue-haas-grotesk-text-bold.otf") format("opentype")',
 			fontWeight: '700',
 			fontDisplay: 'swap',
 		},
 		{
 			fontFamily: 'neue-haas-grotesk-text',
-			src: 'url("https://use.typekit.net/af/0230dd/00000000000000007735bb33/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/0230dd/00000000000000007735bb33/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/0230dd/00000000000000007735bb33/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype")',
+			src: 'url("/fonts/neue-haas-grotesk-text-regular.woff2") format("woff2"),url("/fonts/neue-haas-grotesk-text-regular.woff") format("woff"),url("/fonts/neue-haas-grotesk-text-regular.otf") format("opentype")',
 			fontWeight: '400',
 			fontDisplay: 'swap',
 		},
 		{
 			fontFamily: 'neue-haas-grotesk-text',
-			src: 'url("https://use.typekit.net/af/305037/00000000000000007735bb39/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/305037/00000000000000007735bb39/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/305037/00000000000000007735bb39/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype")',
+			src: 'url("/fonts/neue-haas-grotesk-text-bold.woff2") format("woff2"),url("/fonts/neue-haas-grotesk-text-bold.woff") format("woff"),url("/fonts/neue-haas-grotesk-text-bold.otf") format("opentype")',
 			fontWeight: '700',
 			fontDisplay: 'swap',
 		},
 	],
+	...prismStyles,
 });
 
 export default globalStyles;

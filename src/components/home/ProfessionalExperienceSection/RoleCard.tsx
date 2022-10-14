@@ -1,4 +1,4 @@
-import Card from '@/components/Card';
+import Card from '@/components/common/Card';
 import { Box, Heading, Stack, Type } from '@/components/primitives';
 import type { ProfessionalExperience } from '@/content/types';
 

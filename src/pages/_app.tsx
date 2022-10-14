@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout';
+import Layout from '@/components/common/Layout';
 import type { AppProps } from 'next/app';
 
 const App = ({ Component, pageProps }: AppProps) => {

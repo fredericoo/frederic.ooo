@@ -9,6 +9,7 @@ const projects: Project[] = [
 		link: { href: 'https://saltplay.app' },
 		tags: ['creator', 'design', 'nextjs', 'chakraUi', 'oAuth', 'vercel', 'slackBot', 'typescript', 'postgres', 'redis'],
 		image: { src: '/projects/wrkplay.png', alt: 'Screenshot of SaltPlay by wrkplay' },
+		isFeatured: true,
 	},
 	{
 		title: 'Curta Circuito',
@@ -18,6 +19,7 @@ const projects: Project[] = [
 			'Yearly film festival that had to reinvent itself during the pandemic by airing the films live alongside podcasts and other activities.',
 		tags: ['design', 'chakraUi', 'prismic', 'nextjs', 'typescript', 'vercel'],
 		image: { src: '/projects/curta-circuito.png', alt: 'Screenshot of Curta Circuito 2021’s website' },
+		isFeatured: true,
 	},
 
 	{
@@ -72,6 +74,7 @@ const projects: Project[] = [
 		link: { href: 'https://www.grupogalpao.com.br/en-gb' },
 		tags: ['cssModules', 'nextjs', 'prismic'],
 		image: { src: '/projects/grupo-galpao.png', alt: 'Screenshot of Grupo Galpão’s website' },
+		isFeatured: true,
 	},
 	{
 		title: 'Gira Wine',

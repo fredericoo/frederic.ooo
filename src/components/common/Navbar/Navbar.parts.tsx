@@ -1,0 +1,38 @@
+import { Box } from '@/components/primitives';
+import { styled } from '@/styles';
+
+export const Viewport = styled(Box, {
+	position: 'fixed',
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: '$size$navbar',
+	zIndex: '$highest',
+	userSelect: 'none',
+	transform: 'translateZ(1px)',
+});
+
+export const Wrapper = styled(Box, {
+	paddingInline: '$2',
+	paddingBlockStart: '$2',
+	paddingBlockEnd: 'calc(env(safe-area-inset-bottom) + $space$2)',
+	display: 'flex',
+	position: 'relative',
+	gap: '$min',
+	backgroundColor: '$primary1',
+	borderRadius: '$md',
+	borderEndEndRadius: '0',
+	borderEndStartRadius: '0',
+	justifyContent: 'center',
+});
+
+export const HoveredRect = styled(Box, {
+	position: 'absolute',
+	display: 'block',
+	bg: '$primary6',
+	borderRadius: 'calc($radii$md - $space$min)',
+	zIndex: '0',
+	pointerEvents: 'none',
+	transition: 'all 0.6s $expo',
+	left: 0,
+});

@@ -19,6 +19,7 @@ export type Project = {
 	image?: ProjectImage;
 	link?: { href: string };
 	tags: (keyof typeof tags)[];
+	isFeatured?: boolean;
 };
 
 export type Skill = {

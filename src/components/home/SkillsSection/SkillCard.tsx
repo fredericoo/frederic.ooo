@@ -1,6 +1,6 @@
-import Card from '@/components/Card';
+import Card from '@/components/common/Card';
+import Tag from '@/components/common/Tag';
 import { Heading, Stack } from '@/components/primitives';
-import Tag from '@/components/Tag';
 import type { Skill } from '@/content/types';
 
 type SkillCardProps = {
@@ -19,7 +19,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ categoryName, skills }) => {
 
 					<Stack.H css={{ gap: '$1', flexWrap: 'wrap', marginInline: '-$1' }}>
 						{skills.map(skill => (
-							<Tag css={{ backgroundColor: '$primary1' }} key={skill.name}>
+							<Tag css={{ backgroundColor: '$primary4' }} key={skill.name}>
 								{skill.name}
 							</Tag>
 						))}
