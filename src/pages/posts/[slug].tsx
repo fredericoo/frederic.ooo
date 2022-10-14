@@ -1,5 +1,5 @@
-import BlogLayout from '@/components/common/BlogLayout';
-import { Heading, Type } from '@/components/primitives';
+import BlogLayout from '@/components/post/BlogLayout';
+import { mdxComponents } from '@/components/post/mdx-components';
 import type { Post } from '@/lib/posts.server';
 import { getAllPosts, getPost } from '@/lib/posts.server';
 import { getMDXComponent } from 'mdx-bundler/client';
@@ -17,7 +17,7 @@ const PostPage: React.FC<PostPageProps> = ({ code, meta }) => {
 			<Head>
 				<title>{meta.title}</title>
 			</Head>
-			<Component components={{ p: Type, h2: Heading }} />
+			<Component components={mdxComponents} />
 		</BlogLayout>
 	);
 };

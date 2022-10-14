@@ -5,7 +5,7 @@ tags: ['nextjs', 'middleware', 'analytics', 'mixpanel']
 excerpt: Know which pages your users are visiting without shipping any JavaScript to them.
 ---
 
-There’s a bit of research somewhere proving that when your picture is liked on Instagram, you get a rush of addrenaline. Well I’d much rather have my website visited instead. Differently than Instagram, though, you will not get a notification when your site is accessed; that’s something one would have to manually set up.
+There’s probably a bit of research somewhere proving that when your picture is liked on Instagram, you get a rush of addrenaline. Well I’d much rather have my website visited instead. Differently than Instagram, though, you will not get a notification when your site is accessed; that’s something one would have to manually set up.
 
 ## Mixpanel is a pretty decent analytics tool
 
@@ -14,7 +14,7 @@ The big caveat being if you wanna track your users you need javascript code on t
 
 - bring your TTI (Time to Interactive) down due to a delayed hydration
 - increase the amount of js you’re shipping to your users
-- be blocked by adblockers
+- be blocked by adblockers or good browsers like Brave
 
 ## Don’t touch my static site
 
@@ -22,3 +22,14 @@ If you’re developing a website with React, chances are nowadays you’ll be jo
 Enter Next.js middleware: a way to run code on the server side as you serve your user with static assets. Which means with one function you can track your users page views without sacrificing performance, or risking being blocked.
 
 ## How to track your users with Next.js middleware
+
+> ⚠️ Middleware has changed significantly on Next 12.2. If you’re using an older version, you can find the old documentation [here](https://nextjs.org/docs/middleware).
+
+First, you need to create a middleware file **at the root of your directory** — or `/src` folder if you have one. This function will be called on every page request, and will be passed the request but you can narrow it down with the [matcher](https://nextjs.org/docs/advanced-features/middleware#matcher) property in the `config` object.
+
+```ts
+// middleware.ts
+export const config = {
+	matcher: '/((?!api|public|favicon.ico).*)', // add all toutes you want tracke here
+};
+```

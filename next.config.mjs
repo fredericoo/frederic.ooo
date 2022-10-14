@@ -1,34 +1,5 @@
 /** @type {import('next').NextConfig} */
 import withPreact from 'next-plugin-preact';
-import nextMDX from '@next/mdx';
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrism from 'rehype-prism-plus';
-
-const withMDX = nextMDX({
-	extension: /\.mdx?$/,
-	options: {
-		remarkPlugins: [remarkFrontmatter],
-		rehypePlugins: [
-			rehypePrism,
-			rehypeSlug,
-			rehypeHighlight,
-			[
-				rehypeAutolinkHeadings,
-				{
-					properties: {
-						className: ['anchor'],
-					},
-				},
-			],
-		],
-		format: 'mdx',
-		providerImportSource: '@mdx-js/preact',
-		jsxImportSource: 'preact',
-	},
-});
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -50,7 +21,7 @@ const nextConfig = {
 	},
 };
 
-export default withMDX(withPreact(nextConfig));
+export default withPreact(nextConfig);
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `

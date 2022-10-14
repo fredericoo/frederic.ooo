@@ -2,23 +2,22 @@ import type { ProfessionalExperience } from './types';
 
 const experience: ProfessionalExperience[] = [
 	{
+		companyName: 'Winden',
+		position: 'Senior Frontend developer',
+		year: { start: 2022 },
+		description: '',
+	},
+	{
 		companyName: 'SaltPay',
-		position: 'Front-end developer',
-		year: { start: 2021 },
-		description:
-			'Developing, with enterprise-level practices, the user-facing portal which customers use to manage their business.',
+		position: 'Frontend developer',
+		year: { start: 2021, end: 2022 },
+		description: 'Worked in architecture and development of the user facing dashboard (to be released in 2022).',
 	},
 	{
 		companyName: 'Penumbra design et web',
-		position: 'Co-founder & design engineer',
+		position: 'Co-founder & fullstack developer',
 		year: { start: 2018, end: 2021 },
 		description: 'Designed and built digital and branding projects from ideation to production.',
-	},
-	{
-		companyName: 'guaja.cc',
-		position: 'Art director & web designer',
-		year: { start: 2017, end: 2019 },
-		description: 'Redesigned visual identity, designed marketing, wayfinding, etc.',
 	},
 ];
 

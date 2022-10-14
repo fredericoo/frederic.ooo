@@ -3,6 +3,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkFrontmatter from 'remark-frontmatter';
+import remarkGfm from 'remark-gfm';
 import z from 'zod';
 
 const dateString = z.preprocess(value => {
@@ -22,7 +23,7 @@ export const readMdx = async (source: string) => {
 		source,
 		cwd: process.cwd(),
 		mdxOptions(options) {
-			options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkFrontmatter];
+			options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkFrontmatter, remarkGfm];
 			options.rehypePlugins = [
 				...(options.rehypePlugins ?? []),
 				rehypePrism,
@@ -30,6 +31,7 @@ export const readMdx = async (source: string) => {
 				[
 					rehypeAutolinkHeadings,
 					{
+						behaviour: 'wrap',
 						properties: {
 							className: ['anchor'],
 						},
@@ -38,7 +40,7 @@ export const readMdx = async (source: string) => {
 			];
 			return options;
 		},
-		esbuildOptions(options, frontmatter) {
+		esbuildOptions(options) {
 			options.minify = true;
 			options.target = ['esnext'];
 

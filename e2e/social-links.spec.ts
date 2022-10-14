@@ -5,6 +5,7 @@ test('Link to GitHub opens on a new tab', async ({ page, context }) => {
 
 	const [newPage] = await Promise.all([context.waitForEvent('page'), page.locator('a:has-text("GitHub")').click()]);
 	await newPage.waitForLoadState();
+
 	await expect(newPage).toHaveURL(/github\.com/);
 });
 

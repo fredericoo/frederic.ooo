@@ -4,33 +4,35 @@ import { styled } from '@/styles';
 export const Viewport = styled(Box, {
 	position: 'fixed',
 	bottom: 0,
-	paddingBlockEnd: 'calc(env(safe-area-inset-bottom) + $space$4)',
-	paddingInline: '$8',
 	left: 0,
 	right: 0,
-	display: 'flex',
-	justifyContent: 'center',
-	zIndex: '100',
+	height: '$size$navbar',
+	zIndex: '$highest',
 	userSelect: 'none',
+	transform: 'translateZ(1px)',
 });
 
 export const Wrapper = styled(Box, {
-	padding: '2px',
-	boxShadow: '$lg',
-	borderRadius: '$rounded',
+	paddingInline: '$2',
+	paddingBlockStart: '$2',
+	paddingBlockEnd: 'calc(env(safe-area-inset-bottom) + $space$2)',
 	display: 'flex',
-	bg: '$primary1',
 	position: 'relative',
+	gap: '$min',
+	backgroundColor: '$primary1',
+	borderRadius: '$md',
+	borderEndEndRadius: '0',
+	borderEndStartRadius: '0',
+	justifyContent: 'center',
 });
 
-export const SelectedRect = styled(Box, {
+export const HoveredRect = styled(Box, {
 	position: 'absolute',
 	display: 'block',
-	bg: 'black',
-	borderRadius: '$rounded',
+	bg: '$primary6',
+	borderRadius: 'calc($radii$md - $space$min)',
 	zIndex: '0',
 	pointerEvents: 'none',
 	transition: 'all 0.6s $expo',
-	top: 2,
-	bottom: 2,
+	left: 0,
 });

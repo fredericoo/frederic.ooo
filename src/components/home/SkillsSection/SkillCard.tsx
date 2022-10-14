@@ -19,7 +19,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ categoryName, skills }) => {
 
 					<Stack.H css={{ gap: '$1', flexWrap: 'wrap', marginInline: '-$1' }}>
 						{skills.map(skill => (
-							<Tag css={{ backgroundColor: '$primary1' }} key={skill.name}>
+							<Tag css={{ backgroundColor: '$primary4' }} key={skill.name}>
 								{skill.name}
 							</Tag>
 						))}

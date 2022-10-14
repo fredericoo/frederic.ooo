@@ -38,6 +38,7 @@
 		"rehype-prism-plus": "^1.5.0",
 		"rehype-slug": "^5.0.1",
 		"remark-frontmatter": "^4.0.1",
+		"remark-gfm": "^3.0.1",
 		"sharp": "^0.30.7",
 		"stitches-reset": "^1.0.0",
 		"util": "^0.12.4",

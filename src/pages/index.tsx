@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 				<title>Freddie’s portfolio</title>
 				<meta
 					name="description"
-					content="hey! I’m Freddie, a creative developer obsessed with experimentation & new technologies."
+					content="hey! I’m Freddie, a design driven developer, obsessed with experimentation & new technologies."
 				/>
 			</Head>
 			<Stack.V css={{ gap: '$16' }}>
@@ -34,8 +34,7 @@ const Home: NextPage = () => {
 						<Heading as="h1" size="xl" css={{ paddingInlineStart: '$6' }}>
 							👋
 							<br />
-							hey! I’m Freddie, a creative developer obsessed with experimentation & <NoBreak>new technologies</NoBreak>
-							.
+							hey! I’m Freddie, a design driven developer, typescript geek, & <NoBreak>new tech enthusiast</NoBreak>.
 						</Heading>
 					</Box>
 					<InfoBox />
