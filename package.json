@@ -12,7 +12,8 @@
 		"ts-check": "tsc --noEmit",
 		"test": "vitest --config ./vitest.config.ts",
 		"coverage": "vitest run --coverage",
-		"e2e": "playwright test"
+		"e2e": "playwright test",
+		"bundle-size": "next build && npx -p nextjs-bundle-analysis report"
 	},
 	"dependencies": {
 		"@mdx-js/loader": "^2.1.3",
