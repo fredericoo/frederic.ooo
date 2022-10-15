@@ -74,6 +74,11 @@
 			"prettier --write"
 		]
 	},
+	"nextBundleAnalysis": {
+		"budget": 50000,
+		"budgetPercentIncreaseRed": 20,
+		"showDetails": true
+	},
 	"commitlint": {
 		"rules": {
 			"type-case": [
