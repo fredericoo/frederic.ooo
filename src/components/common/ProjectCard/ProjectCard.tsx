@@ -6,7 +6,7 @@ import { Wrapper } from './ProjectCart.parts';
 
 type ProjectThumbProps = Project;
 
-const THUMB = { height: 1697, width: 2400 };
+const THUMB = { height: 1470, width: 2400 };
 
 const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 	const { image, title, year, description, tags, link } = props;
