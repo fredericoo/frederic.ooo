@@ -1,8 +1,10 @@
+import { useComputedValue } from '@/lib/useComputedValue';
+import { useDelayedValue } from '@/lib/useDelayedValue';
 import { useRects } from '@/lib/useRects';
 import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import { HoveredRect, Viewport, Wrapper } from './Navbar.parts';
+import { HoveredBox, HoveredRect, Viewport, Wrapper } from './Navbar.parts';
 import NavbarItem from './NavbarItem';
 
 const navbarItems: { label: string | ReactElement; href: string; exact?: boolean }[] = [
@@ -16,7 +18,12 @@ const Navbar: React.FC = () => {
 	const [rects, setRect, recalculate] = useRects();
 
 	const [hoveredHref, setHoveredHref] = useState<string>();
-	const hoveredRect = hoveredHref ? rects[hoveredHref] : null;
+	const shouldTransitionMove = useDelayedValue(!!hoveredHref, 100);
+	const hoveredRect = useComputedValue(
+		[hoveredHref, rects],
+		() => (hoveredHref ? rects[hoveredHref] : undefined),
+		() => !!hoveredHref
+	);
 
 	return (
 		<Viewport>
@@ -42,17 +49,18 @@ const Navbar: React.FC = () => {
 					</NavbarItem>
 				))}
 
-				{hoveredRect && (
-					<HoveredRect
-						aria-hidden
-						css={{
-							transform: `translateX(${hoveredRect.left}px)`,
-							width: hoveredRect.width,
-							height: hoveredRect.height,
-							top: hoveredRect.top,
-						}}
-					/>
-				)}
+				<HoveredRect
+					aria-hidden
+					css={{
+						transform: `translateX(${hoveredRect?.left || 0}px)`,
+						width: hoveredRect?.width,
+						height: hoveredRect?.height,
+						top: hoveredRect?.top,
+						transition: shouldTransitionMove ? 'all 0.6s $expo' : undefined,
+					}}
+				>
+					<HoveredBox css={{ transform: `scale(${hoveredHref ? 1 : 0.8})`, opacity: hoveredHref ? 1 : 0 }} />
+				</HoveredRect>
 			</Wrapper>
 		</Viewport>
 	);

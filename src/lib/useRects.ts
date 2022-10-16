@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import useEventListener from './useEventListener';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
-type Rect = {
+export type Rect = {
 	width: number;
 	height: number;
 	left: number;
