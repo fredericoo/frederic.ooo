@@ -25,18 +25,3 @@ export const Wrapper = styled(Box, {
 	borderEndStartRadius: '0',
 	justifyContent: 'center',
 });
-
-export const HoveredRect = styled(Box, {
-	position: 'absolute',
-	zIndex: '0',
-	pointerEvents: 'none',
-	left: 0,
-});
-
-export const HoveredBox = styled(Box, {
-	position: 'absolute',
-	inset: 0,
-	bg: '$primary6',
-	borderRadius: 'calc($radii$md - $space$min)',
-	transition: 'all 0.4s $expo',
-});
