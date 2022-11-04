@@ -8,7 +8,7 @@ import Head from 'next/head';
 
 const Home: NextPage = () => {
 	return (
-		<Container css={{ paddingBlock: '$12' }}>
+		<Container>
 			<Head>
 				<title>Freddie’s portfolio</title>
 				<meta
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 				<Grid
 					as="section"
 					columns={{ '@bp1': 2, '@bp2': 3 }}
-					css={{ '@bp1': { minHeight: '80vh' }, alignItems: 'center' }}
+					css={{ '@bp1': { minHeight: '80vh' }, alignItems: 'center', gap: '$8' }}
 				>
 					<Box
 						as="header"
@@ -32,9 +32,7 @@ const Home: NextPage = () => {
 						}}
 					>
 						<Heading as="h1" size="xl" css={{ paddingInlineStart: '$6' }}>
-							👋
-							<br />
-							hey! I’m Freddie, a design driven developer, typescript geek, & <NoBreak>new tech enthusiast</NoBreak>.
+							design driven dev, typescript geek & <NoBreak>new tech</NoBreak> experimentalist.
 						</Heading>
 					</Box>
 					<InfoBox />

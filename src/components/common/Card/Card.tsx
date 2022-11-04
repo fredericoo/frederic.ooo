@@ -2,7 +2,7 @@ import { styled } from '@/styles';
 import { Box, Stack } from '../../primitives';
 
 export const cardWrapperStyles: Parameters<typeof Stack.V>[0]['css'] = {
-	backgroundColor: '$primary1',
+	backgroundColor: '$primary2',
 	borderRadius: '$md',
 	overflow: 'hidden',
 	position: 'relative',

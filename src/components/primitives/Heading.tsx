@@ -6,15 +6,15 @@ const Heading = styled('p', {
 		size: {
 			xl: {
 				fontSize: '$xl',
-				letterSpacing: '$tight',
 				lineHeight: '$tight',
 				fontWeight: '$normal',
+				textTransform: 'uppercase',
 			},
 			lg: {
 				fontSize: '$lg',
-				letterSpacing: '$tight',
 				lineHeight: '$tight',
 				fontWeight: '$normal',
+				textTransform: 'uppercase',
 			},
 			md: {
 				fontSize: '$md',

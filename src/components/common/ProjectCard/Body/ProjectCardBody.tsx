@@ -58,7 +58,7 @@ const ProjectCardBody: React.FC<ProjectCardBodyProps> = ({ description, tags, li
 			<Card.Divider />
 
 			{link && (
-				<Box css={{ flexShrink: '1', overflow: 'hidden', padding: '$6' }}>
+				<Box css={{ flexShrink: '1', overflow: 'hidden', padding: '$6', paddingBlockStart: '$4' }}>
 					<Type css={{ fontSize: '$sm' }}>Open website on a new tab</Type>
 					<Stack.H css={{ gap: '$1' }}>
 						<Link

@@ -5,7 +5,7 @@ type ProjectsProps = {};
 
 const Projects: React.FC<ProjectsProps> = () => {
 	return (
-		<Container css={{ paddingBlock: '$12' }}>
+		<Container>
 			<AllProjects />
 		</Container>
 	);

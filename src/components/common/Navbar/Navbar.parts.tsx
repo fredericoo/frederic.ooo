@@ -19,7 +19,7 @@ export const Wrapper = styled(Box, {
 	display: 'flex',
 	position: 'relative',
 	gap: '$min',
-	backgroundColor: '$primary1',
+	backgroundColor: '$primary2',
 	borderRadius: '$md',
 	borderEndEndRadius: '0',
 	borderEndStartRadius: '0',

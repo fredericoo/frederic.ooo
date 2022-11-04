@@ -2,11 +2,11 @@ import { details, socials } from '@/content/social';
 import { styled } from '@/styles';
 import { Box, Heading, Image, Stack, Type } from '../primitives';
 
-const Wrapper = styled(Stack.V, { gap: '$12', borderRadius: '$lg', backgroundColor: '$primary1', padding: '$6' });
+const Wrapper = styled(Stack.V, { gap: '$12', borderRadius: '$lg', backgroundColor: '$primary2', padding: '$6' });
 const SocialLink = styled('a', {
 	textTransform: 'lowercase',
 	borderRadius: '$md',
-	backgroundColor: '$primary5',
+	backgroundColor: '$primary6',
 	textDecoration: 'none',
 	fontWeight: '$bold',
 	color: '$primary12',
@@ -16,7 +16,7 @@ const SocialLink = styled('a', {
 	textAlign: 'center',
 	transition: 'transform 0.6s $transitions$expo',
 	_hover: {
-		backgroundColor: '$primary6',
+		backgroundColor: '$primary7',
 	},
 	_focusVisible: {
 		color: '$primary1',
@@ -31,7 +31,15 @@ type InfoBoxProps = {};
 
 const InfoBox: React.FC<InfoBoxProps> = () => {
 	return (
-		<Wrapper as="aside" css={{ position: 'relative', transform: 'translateZ(1px)', isolation: 'isolate' }}>
+		<Wrapper
+			as="aside"
+			css={{
+				position: 'relative',
+				transform: 'translateZ(1px)',
+				isolation: 'isolate',
+				boxShadow: '0 -$space$4 32px 0 rgba(0,0,0,1)',
+			}}
+		>
 			<Stack.V css={{ gap: '$3' }}>
 				<Box
 					css={{
