@@ -33,6 +33,9 @@ const prismStyles = {
 
 const globalStyles = globalCss({
 	...reset,
+	':root': {
+		colorScheme: 'dark',
+	},
 	html: { backgroundColor: 'black' },
 	body: {
 		WebkitTapHighlightColor: 'transparent',
