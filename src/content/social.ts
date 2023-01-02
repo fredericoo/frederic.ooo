@@ -7,7 +7,6 @@ export const socials: Social[] = [
 ];
 
 export const details: Record<string, string> = {
-	'🇬🇧 Location': 'London, UK',
-	'☎️ Mobile': '+44 7553 135 732',
-	'🐦 Email': 'rincofrederico@gmail.com',
+	Location: 'London, UK',
+	Contact: 'rincofrederico@gmail.com',
 };

@@ -1,10 +1,11 @@
 import { Type } from '@/components/primitives';
 import { styled } from '@/styles';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import Link from 'next/link';
 import type { MouseEventHandler, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 
-const Item = styled('a', {
+const Item = styled(NavigationMenu.Link, {
 	flexGrow: '1',
 	'@bp1': {
 		flexGrow: '0',
@@ -16,9 +17,11 @@ const Item = styled('a', {
 	paddingBlock: '$2',
 	borderRadius: '$rounded',
 	position: 'relative',
-	_focus: {
+	_focusVisible: {
 		outline: 'none',
-		color: '$primary12',
+
+		background: '$primary12',
+		color: '$primary1',
 	},
 	_active: {
 		'&>span': { transform: 'scale(0.95)' },
@@ -32,7 +35,7 @@ const Item = styled('a', {
 		status: {
 			active: { color: '$primary12' },
 			inside: { color: '$primary11' },
-			inactive: { color: '$primary10' },
+			inactive: { color: '$primary8' },
 		},
 	},
 });
@@ -48,21 +51,26 @@ const Label = styled(Type, {
 type NavbarItemProps = {
 	href: string;
 	status: 'active' | 'inactive' | 'inside';
-	onMouseEnter: MouseEventHandler<HTMLAnchorElement>;
+	onActivate: MouseEventHandler<HTMLAnchorElement>;
 };
 const NavbarItem = forwardRef<HTMLAnchorElement, PropsWithChildren<NavbarItemProps>>(
-	({ children, status, href, onMouseEnter }, ref) => {
+	({ children, status, href, onActivate }, ref) => {
 		return (
-			<Link href={href} passHref>
-				<Item
-					aria-current={status === 'active' ? 'true' : undefined}
-					status={status}
-					onMouseOver={onMouseEnter}
-					ref={ref}
-				>
-					<Label as="span">{children}</Label>
-				</Item>
-			</Link>
+			<NavigationMenu.Item>
+				<Link href={href} passHref>
+					<Item
+						draggable={false}
+						aria-current={status === 'active' ? 'true' : undefined}
+						status={status}
+						onPointerEnter={onActivate}
+						onPointerUp={e => e.currentTarget.click()}
+						ref={ref}
+						css={{ '-webkit-user-drag': 'none' }}
+					>
+						<Label as="span">{children}</Label>
+					</Item>
+				</Link>
+			</NavigationMenu.Item>
 		);
 	}
 );

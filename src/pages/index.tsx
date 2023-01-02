@@ -2,15 +2,16 @@ import FeaturedProjects from '@/components/home/FeaturedProjects';
 import InfoBox from '@/components/home/InfoBox';
 import ProfessionalExperienceSection from '@/components/home/ProfessionalExperienceSection';
 import SkillsSection from '@/components/home/SkillsSection';
-import { Box, Container, Grid, Heading, NoBreak, Stack } from '@/components/primitives';
+import { Box, Container, Grid, Heading, NoBreak, Stack, Type } from '@/components/primitives';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Balancer from 'react-wrap-balancer';
 
 const Home: NextPage = () => {
 	return (
 		<Container>
 			<Head>
-				<title>Freddie’s portfolio</title>
+				<title>hey! I’m Freddie.</title>
 				<meta
 					name="description"
 					content="hey! I’m Freddie, a design driven developer, obsessed with experimentation & new technologies."
@@ -20,21 +21,36 @@ const Home: NextPage = () => {
 				<Grid
 					as="section"
 					columns={{ '@bp1': 2, '@bp2': 3 }}
-					css={{ '@bp1': { minHeight: '80vh' }, alignItems: 'center', gap: '$8' }}
+					css={{ '@bp1': { minHeight: '80vh' }, alignItems: 'center', gap: '$min' }}
 				>
-					<Box
+					<Stack.V
 						as="header"
 						css={{
-							paddingBlockEnd: '$16',
-							position: 'sticky',
-							top: '$12',
+							paddingBlock: '$32',
+							gap: '$4',
+							'@bp1': { paddingBlock: '0' },
 							'@bp2': { gridColumn: '1 / 3', position: 'static' },
 						}}
 					>
-						<Heading as="h1" size="xl" css={{ paddingInlineStart: '$6' }}>
-							design driven dev, typescript geek & <NoBreak>new tech</NoBreak> experimentalist.
-						</Heading>
-					</Box>
+						<Box
+							css={{
+								paddingInline: '$4',
+							}}
+						>
+							<Heading as="h1" size="xl">
+								<Balancer>
+									design driven developer, typescript geek, & <NoBreak>new tech</NoBreak> experimentalist.
+								</Balancer>
+							</Heading>
+						</Box>
+						<Type css={{ paddingInline: '$4', color: '$primary9' }}>
+							<Balancer>
+								I’m a communicative front-end developer who loves to create and deploy. <br />
+								On a regular morning expect to hear me overexcitedly talk about the next new big library, compiler, or
+								animation engine.
+							</Balancer>
+						</Type>
+					</Stack.V>
 					<InfoBox />
 				</Grid>
 

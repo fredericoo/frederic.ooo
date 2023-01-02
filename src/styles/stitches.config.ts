@@ -1,18 +1,29 @@
-import { cyanDark, mauveDark, plumDark } from '@radix-ui/colors';
+import { cyan, plum } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 import type { N } from 'ts-toolbelt';
-import utils, { buildScale, renameRadixColour } from './utils';
-
-const primary = renameRadixColour(mauveDark, 'mauve', 'primary');
+import utils, { buildScale } from './utils';
 
 export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config } = createStitches({
 	theme: {
 		colors: {
-			...primary,
+			primary12: '#231f20',
+			primary11: '#3a3636',
+			primary10: '#504d4c',
+			primary9: '#676362',
+			primary8: '#7e7a78',
+			primary7: '#94918e',
+			primary6: '#aba8a4',
+			primary5: '#c2beba',
+			primary4: '#d8d5d0',
+			primary3: '#efece6',
+			primary2: '#f0f0f0',
+			primary1: '#fafafa',
+			bg: '#ffffff',
+			gridlines: '$primary2',
 			accent: '#E54D2E',
 			accentWideGamut: 'color(display-p3 1 0.249 0)',
-			tagCreator: cyanDark.cyan4,
-			tagDesign: plumDark.plum4,
+			tagCreator: cyan.cyan11,
+			tagDesign: plum.plum11,
 		},
 		fonts: {
 			text: '"neue-haas-grotesk-text", Helvetica, sans-serif',
@@ -36,6 +47,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 			textBlock: '600px',
 		},
 		letterSpacings: {
+			tightest: '-0.05em',
 			tight: '-0.025em',
 			normal: '0',
 		},

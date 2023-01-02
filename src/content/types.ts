@@ -35,7 +35,7 @@ export type Social = {
 
 export type ProfessionalExperience = {
 	companyName: string;
-	year: { start: number; end?: number };
+	year: { start: string | number; end?: string | number };
 	position: string;
 	description: string;
 };

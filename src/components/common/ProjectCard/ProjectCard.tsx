@@ -12,13 +12,14 @@ const ProjectThumb: React.FC<ProjectThumbProps> = props => {
 	const { image, title, year, description, tags, link } = props;
 
 	return (
-		<Wrapper as="article">
+		<Wrapper as="article" css={{ padding: '$2' }}>
 			{image && (
 				<Image
 					src={image.src}
 					alt={image.alt}
 					height={THUMB.height}
 					width={THUMB.width}
+					css={{ borderTopLeftRadius: '$sm', borderTopRightRadius: '$sm' }}
 					sizes={'(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) 1024px, 512px'}
 				/>
 			)}

@@ -7,19 +7,20 @@ const Heading = styled('p', {
 			xl: {
 				fontSize: '$xl',
 				lineHeight: '$tight',
-				fontWeight: '$normal',
-				textTransform: 'uppercase',
+				fontWeight: '$bold',
+				letterSpacing: '$tightest',
 			},
 			lg: {
 				fontSize: '$lg',
 				lineHeight: '$tight',
 				fontWeight: '$normal',
-				textTransform: 'uppercase',
+				letterSpacing: '$tight',
 			},
 			md: {
 				fontSize: '$md',
 				lineHeight: '$tight',
 				fontWeight: '$bold',
+				letterSpacing: '$tight',
 			},
 		},
 	},

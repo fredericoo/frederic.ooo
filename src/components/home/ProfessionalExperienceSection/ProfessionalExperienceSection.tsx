@@ -8,7 +8,7 @@ type ProfessionalExperienceSectionProps = {};
 const ProfessionalExperienceSection: React.FC<ProfessionalExperienceSectionProps> = () => {
 	return (
 		<Section title="Professional Experience">
-			<Grid columns={{ '@bp1': 2, '@bp2': 3 }}>
+			<Grid columns={{ '@bp1': 4, '@bp2': 3 }}>
 				{experience.map(role => (
 					<RoleCard key={role.companyName + role.position} {...role} />
 				))}

@@ -35,8 +35,8 @@ const HoverRect: React.FC<HoverRectProps> = ({ rects, hoveredHref }) => {
 				css={{
 					position: 'absolute',
 					inset: 0,
-					bg: '$primary6',
-					borderRadius: 'calc($radii$md - $space$min)',
+					bg: '#10000010',
+					borderRadius: '$rounded',
 					transition: 'all 0.4s $expo',
 					transform: `scale(${hoveredHref ? 1 : 0.8})`,
 					opacity: hoveredHref ? 1 : 0,

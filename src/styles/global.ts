@@ -34,9 +34,9 @@ const prismStyles = {
 const globalStyles = globalCss({
 	...reset,
 	':root': {
-		colorScheme: 'dark',
+		colorScheme: 'light',
 	},
-	html: { backgroundColor: 'black' },
+	html: { backgroundColor: '$bg', overflowY: 'scroll' },
 	body: {
 		WebkitTapHighlightColor: 'transparent',
 		MozOsxFontSmoothing: 'grayscale',

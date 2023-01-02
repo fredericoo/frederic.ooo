@@ -1,27 +1,33 @@
-import { Box } from '@/components/primitives';
 import { styled } from '@/styles';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
-export const Viewport = styled(Box, {
+export const Viewport = styled(NavigationMenu.Root, {
 	position: 'fixed',
-	bottom: 0,
+	top: 'auto',
+	bottom: 'calc(env(safe-area-inset-bottom) + $space$2)',
 	left: 0,
 	right: 0,
-	height: '$size$navbar',
 	zIndex: '$highest',
 	userSelect: 'none',
 	transform: 'translateZ(1px)',
+	textAlign: 'center',
 });
 
-export const Wrapper = styled(Box, {
-	paddingInline: '$2',
-	paddingBlockStart: '$2',
-	paddingBlockEnd: 'calc(env(safe-area-inset-bottom) + $space$2)',
-	display: 'flex',
+export const Wrapper = styled(NavigationMenu.List, {
+	listStyleType: 'none',
 	position: 'relative',
+	display: 'inline-flex',
+	'@bp1': {
+		marginInline: '$2',
+	},
+	padding: '$min',
+
 	gap: '$min',
-	backgroundColor: '$primary2',
-	borderRadius: '$md',
-	borderEndEndRadius: '0',
-	borderEndStartRadius: '0',
+	backgroundColor: '#fafafaf0',
+	border: '1px solid $colors$primary2',
+	backdropFilter: 'blur(10px)',
+	borderRadius: '$rounded',
+
 	justifyContent: 'center',
+	boxShadow: '$lg',
 });

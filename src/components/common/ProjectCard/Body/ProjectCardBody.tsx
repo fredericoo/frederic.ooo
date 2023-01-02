@@ -1,35 +1,59 @@
-import Card from '@/components/common/Card';
+import Tag from '@/components/common/Tag';
 import { Box, Heading, Link, Stack, Type } from '@/components/primitives';
 import projectTags from '@/content/tags';
 import type { Project } from '@/content/types';
-import { urlToDisplay } from '@/lib/utils';
-import { styled } from '@/styles';
+import type { PropsWithChildren } from 'react';
+import Balancer from 'react-wrap-balancer';
 import Arrow from './Arrow';
 
 type ProjectCardBodyProps = Pick<Project, 'description' | 'tags' | 'link' | 'title' | 'year'>;
 
-const Tag = styled(Box, {
-	textTransform: 'lowercase',
-	paddingInline: '$2',
-	paddingBlock: '$1',
-	backgroundColor: '$primary4',
-	borderRadius: '$xs',
-	fontSize: '$sm',
-});
+const ProjectLink: React.FC<PropsWithChildren<{ href?: string }>> = ({ children, href }) => {
+	if (!href) return <>{children}</>;
+
+	return (
+		<Link
+			href={href}
+			target="_blank"
+			rel="noopener noreferrer"
+			css={{
+				borderRadius: '$rounded',
+				paddingBlock: '$1',
+				paddingInline: '$3',
+				marginInline: '-$3',
+				transition: 'all 0.6s $transitions$expo',
+				_hover: {
+					backgroundColor: '$primary3',
+				},
+				_focusVisible: {
+					color: '$primary1',
+					backgroundColor: '$primary12',
+				},
+				_active: {
+					transform: 'scale(0.95)',
+				},
+			}}
+		>
+			{children} <Arrow />
+		</Link>
+	);
+};
 
 const ProjectCardBody: React.FC<ProjectCardBodyProps> = ({ description, tags, link, title, year }) => {
 	return (
-		<Stack.V css={{ flexGrow: 1 }}>
+		<Stack.V
+			css={{ flexGrow: 1, background: '$primary1', borderBottomLeftRadius: '$sm', borderBottomRightRadius: '$sm' }}
+		>
 			<Stack.V
 				css={{
 					flexGrow: 1,
-					padding: '$6',
+					padding: '$4',
 					gap: '$4',
 				}}
 			>
 				<Stack.V as="header" css={{ gap: '$1' }}>
 					<Heading as="h3" size="md">
-						{title}
+						<ProjectLink href={link?.href}>{title}</ProjectLink>
 					</Heading>
 					{year && (
 						<Box as="dl" css={{ fontSize: '$sm' }}>
@@ -41,38 +65,23 @@ const ProjectCardBody: React.FC<ProjectCardBodyProps> = ({ description, tags, li
 					)}
 				</Stack.V>
 
-				{description && <Type css={{ flexGrow: 1 }}>{description}</Type>}
+				{description && (
+					<Type css={{ flexGrow: 1, color: '$primary9' }}>
+						<Balancer>{description}</Balancer>
+					</Type>
+				)}
 
 				<Stack.H css={{ gap: '$1', flexWrap: 'wrap' }}>
 					{tags?.map(tagName => {
 						const tag = projectTags[tagName];
 						return (
-							<Tag key={tagName} css={'color' in tag ? { backgroundColor: tag.color } : undefined}>
+							<Tag key={tagName} css={'color' in tag ? { color: tag.color } : undefined}>
 								{tag.text}
 							</Tag>
 						);
 					})}
 				</Stack.H>
 			</Stack.V>
-
-			<Card.Divider />
-
-			{link && (
-				<Box css={{ flexShrink: '1', overflow: 'hidden', padding: '$6', paddingBlockStart: '$4' }}>
-					<Type css={{ fontSize: '$sm' }}>Open website on a new tab</Type>
-					<Stack.H css={{ gap: '$1' }}>
-						<Link
-							href={link.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							css={{ fontWeight: '$bold', fontFamily: '$display' }}
-						>
-							{urlToDisplay(link.href)}
-						</Link>
-						<Arrow />
-					</Stack.H>
-				</Box>
-			)}
 		</Stack.V>
 	);
 };

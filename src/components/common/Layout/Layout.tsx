@@ -1,4 +1,4 @@
-import { Box } from '@/components/primitives';
+import { Box, Container, Grid } from '@/components/primitives';
 import { styled } from '@/styles';
 import type { ReactNode } from 'react';
 import Navbar from '../Navbar';
@@ -6,6 +6,49 @@ import Navbar from '../Navbar';
 type LayoutProps = {
 	children: ReactNode;
 };
+
+const Deco = styled('div', {
+	position: 'fixed',
+	zIndex: -1,
+	inset: 0,
+});
+
+const DecoGridCol = styled('div', {
+	position: 'relative',
+	gridRow: '1 / 2',
+	'&:after': {
+		content: '""',
+		position: 'absolute',
+		right: 'calc($space$min / -2)',
+		top: 0,
+		bottom: 0,
+		width: '1px',
+		backgroundColor: '$gridlines',
+	},
+	'&:first-of-type:before': {
+		content: '""',
+		position: 'absolute',
+		left: '-1px',
+		top: 0,
+		bottom: 0,
+		width: '1px',
+		backgroundColor: '$gridlines',
+	},
+	height: '100%',
+	'&:nth-of-type(n + 2)': {
+		display: 'none',
+		'@bp1': {
+			display: 'block',
+		},
+	},
+
+	'&:nth-of-type(n + 4)': {
+		display: 'none',
+		'@bp2': {
+			display: 'block',
+		},
+	},
+});
 
 const Main = styled(Box, {
 	borderRadius: '$md',
@@ -15,25 +58,23 @@ const Main = styled(Box, {
 	},
 });
 
-const Frame = styled(Box, {
-	pointerEvents: 'none',
-	position: 'fixed',
-	left: 0,
-	right: 0,
-	bottom: 'calc($space$min + $sizes$navbar)',
-	height: 'calc(100vh - $sizes$navbar - $space$min*2)',
-	zIndex: '99',
-	transform: 'translateZ(1px)',
-	borderRadius: '$md',
-	boxShadow: '0 0 0 calc($radii$md + $space$10) black',
-});
-
 const Layout: React.FC<LayoutProps> = ({ children }) => {
 	return (
 		<Box css={{ position: 'relative' }}>
-			<Frame role="presentation" />
-			<Main>{children}</Main>
+			<Deco aria-hidden>
+				<Container css={{ height: '100%', padding: '0' }}>
+					<Grid columns={{ '@initial': 2, '@bp1': 4, '@bp2': 6 }} css={{ height: '100%' }}>
+						<DecoGridCol />
+						<DecoGridCol />
+						<DecoGridCol />
+						<DecoGridCol />
+						<DecoGridCol />
+						<DecoGridCol />
+					</Grid>
+				</Container>
+			</Deco>
 			<Navbar />
+			<Main>{children}</Main>
 		</Box>
 	);
 };
