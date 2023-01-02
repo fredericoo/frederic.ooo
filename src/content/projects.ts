@@ -19,7 +19,6 @@ const projects: Project[] = [
 			'Yearly film festival that had to reinvent itself during the pandemic by airing the films live alongside podcasts and other activities.',
 		tags: ['design', 'chakraUi', 'prismic', 'nextjs', 'typescript', 'vercel'],
 		image: { src: '/projects/curta-circuito.png', alt: 'Screenshot of Curta Circuito 2021’s website' },
-		isFeatured: true,
 	},
 
 	{
@@ -30,6 +29,7 @@ const projects: Project[] = [
 		link: { href: 'https://matulafilmfestival.com.br/' },
 		tags: ['design', 'styledComponents', 'prismic', 'nextjs', 'typescript', 'vercel'],
 		image: { src: '/projects/matula.png', alt: 'Screenshot of Matula’s website' },
+		isFeatured: true,
 	},
 	{
 		title: 'Filipe Lampejo',
