@@ -1,6 +1,7 @@
 import { details, socials } from '@/content/social';
 import { styled } from '@/styles';
 import { Box, Grid, Heading, Image, Stack, Type } from '../primitives';
+import { FunBits } from './FunBits';
 
 const Wrapper = styled(Stack.V, {
 	gap: '$6',
@@ -66,7 +67,7 @@ const InfoBox: React.FC<InfoBoxProps> = () => {
 					Frederico “Freddie” Batista
 				</Heading>
 
-				<Type css={{ color: '$primary9' }}>currently exploring solid.js and rust.</Type>
+				<FunBits />
 			</Stack.V>
 			<Stack.V as="dl" css={{ gap: '$2' }}>
 				{Object.entries(details).map(([key, value]) => (

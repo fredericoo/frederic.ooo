@@ -42,7 +42,12 @@ const ProjectLink: React.FC<PropsWithChildren<{ href?: string }>> = ({ children,
 const ProjectCardBody: React.FC<ProjectCardBodyProps> = ({ description, tags, link, title, year }) => {
 	return (
 		<Stack.V
-			css={{ flexGrow: 1, background: '$primary1', borderBottomLeftRadius: '$sm', borderBottomRightRadius: '$sm' }}
+			css={{
+				flexGrow: 1,
+				background: '$primary1',
+				borderBottomLeftRadius: '$sm',
+				borderBottomRightRadius: '$sm',
+			}}
 		>
 			<Stack.V
 				css={{

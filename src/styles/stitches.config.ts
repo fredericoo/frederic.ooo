@@ -20,8 +20,6 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 			primary1: '#fafafa',
 			bg: '#ffffff',
 			gridlines: '$primary2',
-			accent: '#E54D2E',
-			accentWideGamut: 'color(display-p3 1 0.249 0)',
 			tagCreator: cyan.cyan11,
 			tagDesign: plum.plum11,
 		},
@@ -68,6 +66,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 		},
 		shadows: {
 			lg: '0px 91px 201px rgba(0, 0, 0, 0.09), 0px 38.0176px 83.973px rgba(0, 0, 0, 0.0646969), 0px 20.326px 44.896px rgba(0, 0, 0, 0.0536497), 0px 11.3946px 25.1683px rgba(0, 0, 0, 0.045), 0px 6.05159px 13.3667px rgba(0, 0, 0, 0.0363503), 0px 2.5182px 5.56219px rgba(0, 0, 0, 0.0253031)',
+			sm: '0px 22px 65px rgba(35, 31, 32, 0.06), 0px 9.19107px 27.1554px rgba(35, 31, 32, 0.0450562), 0px 4.91399px 14.5186px rgba(35, 31, 32, 0.0397067), 0px 2.75474px 8.13901px rgba(35, 31, 32, 0.0356057), 0px 1.46302px 4.32257px rgba(35, 31, 32, 0.0309009), 0px 0.608796px 1.79872px rgba(35, 31, 32, 0.0234056)',
 		},
 		radii: {
 			rounded: '999rem',
