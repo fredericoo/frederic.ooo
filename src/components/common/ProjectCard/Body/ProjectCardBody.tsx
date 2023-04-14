@@ -72,7 +72,7 @@ const ProjectCardBody: React.FC<ProjectCardBodyProps> = ({ description, tags, li
 
 				{description && (
 					<Type css={{ flexGrow: 1, color: '$primary9' }}>
-						<Balancer>{description}</Balancer>
+						<Balancer ratio={0.25}>{description}</Balancer>
 					</Type>
 				)}
 

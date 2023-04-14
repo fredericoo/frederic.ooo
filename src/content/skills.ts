@@ -65,11 +65,10 @@ const skillCategories: SkillCategory[] = [
 			{ name: 'Mentoring' },
 			{ name: 'Pair programming' },
 			{ name: 'Code reviewing' },
+			{ name: 'Acceptance testing' },
 			{ name: 'Confluence & Jira' },
 			{ name: 'Notion' },
 			{ name: 'Linear' },
-			{ name: 'Agile/Scrum' },
-			{ name: 'Kanban' },
 		],
 	},
 ];
