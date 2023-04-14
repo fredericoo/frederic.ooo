@@ -4,7 +4,7 @@ const projects: Project[] = [
 	{
 		title: 'Winden UI',
 		year: { start: 2022 },
-		description: 'UI library for Winden.',
+		description: 'UI library with over 45 tailor made accessible and animated components made for Winden.',
 		link: { href: 'https://ui-docs.winden.co' },
 		tags: ['creator', 'maintainer', 'react', 'framerMotion', 'vanillaExtract'],
 		image: { src: '/projects/winden-ui.png', alt: 'Screenshot of the FilterMenu component in Winden UI' },
