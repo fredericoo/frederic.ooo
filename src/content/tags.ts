@@ -1,7 +1,8 @@
 import { createTags } from './types';
 
 const projectTags = createTags({
-	creator: { text: 'Created', color: '$tagCreator' },
+	creator: { text: 'Author', color: '$tagCreator' },
+	maintainer: { text: 'Maintainer', color: '$tagMaintainer' },
 	design: { text: 'Designed', color: '$tagDesign' },
 
 	nextjs: { text: 'Next.js' },
@@ -14,6 +15,7 @@ const projectTags = createTags({
 
 	styledComponents: { text: 'Styled Components' },
 	stitches: { text: 'Stitches.js' },
+	vanillaExtract: { text: 'Vanilla Extract' },
 	chakraUi: { text: 'Chakra UI' },
 	cssModules: { text: 'CSS Modules' },
 

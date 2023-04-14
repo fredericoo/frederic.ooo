@@ -2,6 +2,15 @@ import type { Project } from './types';
 
 const projects: Project[] = [
 	{
+		title: 'Winden UI',
+		year: { start: 2022 },
+		description: 'UI library for Winden.',
+		link: { href: 'https://ui-docs.winden.co' },
+		tags: ['creator', 'maintainer', 'react', 'framerMotion', 'vanillaExtract'],
+		image: { src: '/projects/winden-ui.png', alt: 'Screenshot of the FilterMenu component in Winden UI' },
+		isFeatured: true,
+	},
+	{
 		title: 'SaltPlay / wrkplay',
 		year: { start: 2022 },
 		description:
@@ -29,7 +38,6 @@ const projects: Project[] = [
 		link: { href: 'https://matulafilmfestival.com.br/' },
 		tags: ['design', 'styledComponents', 'prismic', 'nextjs', 'typescript', 'vercel'],
 		image: { src: '/projects/matula.png', alt: 'Screenshot of Matula’s website' },
-		isFeatured: true,
 	},
 	{
 		title: 'Filipe Lampejo',
@@ -39,6 +47,7 @@ const projects: Project[] = [
 		link: { href: 'https://filipelampejo.com/' },
 		tags: ['design', 'styledComponents', 'prismic', 'nextjs', 'typescript', 'reactSpring', 'vercel', 'i18n'],
 		image: { src: '/projects/filipe-lampejo.png', alt: 'Screenshot of Filipe Lampejo’s website' },
+		isFeatured: true,
 	},
 	{
 		title: 'Trium Capital',
@@ -74,7 +83,6 @@ const projects: Project[] = [
 		link: { href: 'https://www.grupogalpao.com.br/en-gb' },
 		tags: ['cssModules', 'nextjs', 'prismic'],
 		image: { src: '/projects/grupo-galpao.png', alt: 'Screenshot of Grupo Galpão’s website' },
-		isFeatured: true,
 	},
 	{
 		title: 'Gira Wine',

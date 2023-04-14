@@ -1,4 +1,4 @@
-import { cyan, plum } from '@radix-ui/colors';
+import { cyan, lime, plum } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 import type { N } from 'ts-toolbelt';
 import utils, { buildScale } from './utils';
@@ -22,6 +22,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 			gridlines: '$primary2',
 			tagCreator: cyan.cyan11,
 			tagDesign: plum.plum11,
+			tagMaintainer: lime.lime11,
 		},
 		fonts: {
 			text: '"neue-haas-grotesk-text", Helvetica, sans-serif',
